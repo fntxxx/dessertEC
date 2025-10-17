@@ -1,0 +1,22 @@
+@use "variable" as *;
+
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+    border: blue 0.5px solid;
+}
+
+html,
+body {
+    overflow-x: hidden;
+    overflow-y: scroll;
+    scrollbar-width: none;
+    -ms-overflow-style: none;
+    font-family: $font-primary;
+}
+
+html::-webkit-scrollbar,
+body::-webkit-scrollbar {
+    display: none;
+}
