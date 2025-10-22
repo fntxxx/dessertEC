@@ -1,0 +1,10 @@
+@use "../base" as *;
+
+.container {
+    margin: 0 42px;
+    background-color: $color-white;
+
+    @include mobile {
+        margin: 0px;
+    }
+}

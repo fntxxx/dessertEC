@@ -1,0 +1,153 @@
+@use "../base" as *;
+@use "../components" as *;
+
+.footer__subscription {
+    @include flex-between;
+    flex-wrap: nowrap;
+    padding: 30px 122px;
+    background-color: $color-primary;
+    position: relative;
+    left: 50%;
+    right: 50%;
+    width: 100vw;
+    margin-left: -50vw;
+    margin-right: -50vw;
+
+    @include mobile {
+        padding: 30px;
+        flex-direction: column;
+        gap: 30px;
+    }
+}
+
+.footer__subscription-info {
+    @include flex-between;
+    gap: 20px;
+
+    p {
+        font: normal normal normal 24px/29px $font-secondary;
+        letter-spacing: 0px;
+        color: $color-secondary-light;
+        white-space: nowrap;
+    }
+}
+
+.footer__subscription-form {
+    @include flex-center;
+    background-color: $color-secondary-light;
+    flex: 1;
+    min-width: 0;
+    max-width: 380px;
+
+    @include mobile {
+        max-width: 315px;
+    }
+}
+
+.footer__ic-mail {
+    @include flex-center;
+    width: 64px;
+    height: 56px;
+}
+
+.footer__input {
+    background-color: $color-secondary-light;
+    height: 56px;
+    outline: none;
+    text-align: right;
+    border: none;
+    flex: 1;
+    min-width: 0;
+}
+
+.footer__button {
+    @include flex-center;
+    width: 64px;
+    height: 56px;
+    background-color: $color-primary-light;
+    cursor: pointer;
+    transition: transform 0.2s ease;
+    border: none;
+
+    &:hover {
+        transform: translateX(2px);
+    }
+}
+
+.footer__content {
+    @include flex-between;
+    flex-direction: column;
+    gap: 30px;
+    padding: 30px 122px;
+    background-color: $color-secondary-light;
+    position: relative;
+    left: 50%;
+    right: 50%;
+    width: 100vw;
+    margin-left: -50vw;
+    margin-right: -50vw;
+
+    @include mobile {
+        padding: 30px;
+        gap: 37px;
+    }
+}
+
+.footer__info {
+    @include flex-between;
+    width: 100%;
+}
+
+.footer__brand {
+    @include flex-between;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 115.5px;
+
+    @include mobile {
+        gap: 39.5px;
+    }
+}
+
+.footer__contact {
+    @include flex-between;
+    flex-direction: column;
+    align-items: flex-start;
+
+    p {
+        font: normal normal normal 16px/24px $font-secondary;
+        letter-spacing: 0px;
+        color: $color-primary;
+    }
+}
+
+.footer__slogan {
+    @include mobile {
+        display: none;
+    }
+}
+
+.footer__social {
+    @include flex-between;
+    width: 100%;
+    flex-wrap: nowrap;
+
+    @include mobile {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 23px;
+    }
+}
+
+.footer__social-icons {
+    @include flex-between;
+    gap: 8px;
+    flex-wrap: nowrap;
+}
+
+.footer__copyright {
+    font: normal normal normal 16px/19px $font-serif;
+    letter-spacing: 0px;
+    color: $color-primary;
+    text-align: right;
+}

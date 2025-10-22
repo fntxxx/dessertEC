@@ -1,0 +1,71 @@
+@use "../base" as *;
+@use "../components" as *;
+
+header {
+    margin: 30px 0;
+
+    @include mobile {
+        margin: 30px;
+    }
+
+    a {
+        @include link--neutral;
+        color: $color-primary;
+    }
+}
+
+.nav {
+    @include flex-between;
+    flex-wrap: wrap;
+}
+
+.nav__menu {
+    display: none;
+
+    @include mobile {
+        @include flex-center;
+        width: 24px;
+        height: 24px;
+    }
+}
+
+.nav__logo--lg {
+    display: block;
+
+    @include mobile {
+        display: none;
+    }
+}
+
+.nav__logo--sm {
+    display: none;
+
+    @include mobile {
+        display: block;
+    }
+}
+
+.nav__links {
+    @include flex-between;
+    gap: clamp(0px, 8vw, 80px);
+}
+
+.nav__links-bar--lg {
+    @include flex-between;
+    gap: clamp(0px, 6vw, 60px);
+
+    @include mobile {
+        display: none;
+    }
+}
+
+.nav__links-bar--sm {
+    display: none;
+
+    @include mobile {
+        display: flex;
+        justify-content: space-evenly;
+        align-items: center;
+        flex-wrap: wrap;
+    }
+}
