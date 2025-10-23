@@ -877,7 +877,7 @@ header a {
   display: flex;
   justify-content: center;
   margin-top: 95px;
-  margin-bottom: 80px;
+  margin-bottom: 20px;
 }
 .section-why-choose__text-only--lg img {
   width: 100%;
@@ -903,4 +903,135 @@ header a {
     min-width: 196px;
     height: auto;
   }
+}
+
+.section-products {
+  width: 100%;
+  margin: 60px auto;
+}
+@media (max-width: 568px) {
+  .section-products {
+    margin-top: 0;
+    margin-bottom: 30px;
+  }
+}
+.section-products__list {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 20px;
+  flex-wrap: wrap;
+  margin: 0 auto;
+}
+@media (max-width: 568px) {
+  .section-products__list {
+    flex-direction: column;
+  }
+}
+.section-products__item {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 300px;
+}
+@media (max-width: 568px) {
+  .section-products__item {
+    width: 315px;
+  }
+}
+.section-products__image {
+  position: relative;
+  width: 100%;
+  overflow: hidden;
+}
+.section-products__image img {
+  width: 100%;
+  height: 315px;
+  object-fit: cover;
+  display: block;
+  transition: transform 0.3s ease;
+}
+.section-products__item:hover .section-products__image img {
+  transform: scale(1.05);
+}
+.section-products__badge {
+  position: absolute;
+  top: 0px;
+  left: 20px;
+  background-color: #3F5D45;
+  color: #EAF0ED;
+  font: normal normal 600 16px/20px "PingFang TC", "Noto Sans TC", "Microsoft JhengHei", sans-serif;
+  writing-mode: vertical-rl;
+  text-orientation: upright;
+  padding: 10px;
+  letter-spacing: 0px;
+  z-index: 2;
+}
+.section-products__fav {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: absolute;
+  top: 19px;
+  right: 22px;
+  width: 20px;
+  height: 20px;
+  border: none;
+  cursor: pointer;
+  transition: background-color 0.3s ease, transform 0.2s ease;
+  z-index: 2;
+  background-color: transparent;
+}
+.section-products__fav img {
+  width: 20px;
+  height: 20px;
+  transition: filter 0.3s ease;
+}
+.section-products__fav:hover {
+  transform: scale(1.1);
+}
+.section-products__info {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 100%;
+  height: 56px;
+  border: #EAF0ED solid 1px;
+  padding: 14px 0;
+}
+.section-products__info .section-products__name {
+  font: normal normal 300 20px/20px "PingFang TC", "Noto Sans TC", "Microsoft JhengHei", sans-serif;
+  color: #3F5D45;
+  letter-spacing: 0px;
+  margin-left: 33px;
+}
+.section-products__info .section-products__price {
+  font: normal normal 600 20px/24px "PingFang TC", "Noto Sans TC", "Microsoft JhengHei", sans-serif;
+  color: #3F5D45;
+  letter-spacing: 0px;
+  margin-right: 20px;
+}
+.section-products__action {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+}
+.section-products__btn {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  height: 65px;
+  border: none;
+  background-color: #EAF0ED;
+  cursor: pointer;
+  transition: background-color 0.3s ease, transform 0.3s ease;
+}
+.section-products__btn:hover {
+  transform: scale(1.03);
+}
+.section-products__btn p {
+  margin: 0;
+  font: normal normal 600 24px/20px "PingFang TC", "Noto Sans TC", "Microsoft JhengHei", sans-serif;
+  color: #3F5D45;
 }/*# sourceMappingURL=all.css.map */

@@ -77,6 +77,68 @@ export default function home() {
         </div>
     </section>
 
+        <section class="section-products">
+        <div class="section-products__list">
+
+            <div class="section-products__item">
+                <div class="section-products__image">
+                    <img src="./img/home/product1.avif" alt="焦糖馬卡龍">
+                    <div class="section-products__badge">本日精選</div>
+                    <button class="section-products__fav">
+                        <img src="./img/ic-favorite.png" alt="加入收藏">
+                    </button>
+                </div>
+                <div class="section-products__info">
+                    <p class="section-products__name">焦糖馬卡龍</p>
+                    <p class="section-products__price">NT$ 450</p>
+                </div>
+                <div class="section-products__action">
+                    <button class="section-products__btn">
+                        <p>加入購物車</p>
+                    </button>
+                </div>
+            </div>
+
+            <div class="section-products__item">
+                <div class="section-products__image">
+                    <img src="./img/home/product2.avif" alt="焦糖馬卡龍">
+                    <div class="section-products__badge">本日精選</div>
+                    <button class="section-products__fav">
+                        <img src="./img/ic-favorite.png" alt="加入收藏">
+                    </button>
+                </div>
+                <div class="section-products__info">
+                    <p class="section-products__name">焦糖馬卡龍</p>
+                    <p class="section-products__price">NT$ 450</p>
+                </div>
+                <div class="section-products__action">
+                    <button class="section-products__btn">
+                        <p>加入購物車</p>
+                    </button>
+                </div>
+            </div>
+
+            <div class="section-products__item">
+                <div class="section-products__image">
+                    <img src="./img/home/product3.avif" alt="焦糖馬卡龍">
+                    <div class="section-products__badge">本日精選</div>
+                    <button class="section-products__fav">
+                        <img src="./img/ic-favorite.png" alt="加入收藏">
+                    </button>
+                </div>
+                <div class="section-products__info">
+                    <p class="section-products__name">焦糖馬卡龍</p>
+                    <p class="section-products__price">NT$ 450</p>
+                </div>
+                <div class="section-products__action">
+                    <button class="section-products__btn">
+                        <p>加入購物車</p>
+                    </button>
+                </div>
+            </div>
+        </div>
+    </section>
+
   `;
     return el;
 }
