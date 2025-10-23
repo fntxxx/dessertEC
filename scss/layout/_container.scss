@@ -1,7 +1,10 @@
+/* container.scss */
+
 @use "../base" as *;
 
 .container {
-    margin: 0 42px;
+    max-width: 940px;
+    margin: 0 auto;
     background-color: $color-white;
 
     @include mobile {

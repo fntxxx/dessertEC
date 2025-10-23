@@ -1,10 +1,9 @@
+/* footer.scss */
+
 @use "../base" as *;
 @use "../components" as *;
 
 .footer__subscription {
-    @include flex-between;
-    flex-wrap: nowrap;
-    padding: 30px 122px;
     background-color: $color-primary;
     position: relative;
     left: 50%;
@@ -13,10 +12,19 @@
     margin-left: -50vw;
     margin-right: -50vw;
 
-    @include mobile {
-        padding: 30px;
-        flex-direction: column;
-        gap: 30px;
+
+    &--inner {
+        @include flex-between;
+        max-width: 940px;
+        margin: 30px auto;
+        flex-wrap: nowrap;
+        padding: 0px 70px;
+
+        @include mobile {
+            flex-direction: column;
+            gap: 30px;
+            margin: 30px;
+        }
     }
 }
 
@@ -75,10 +83,6 @@
 }
 
 .footer__content {
-    @include flex-between;
-    flex-direction: column;
-    gap: 30px;
-    padding: 30px 122px;
     background-color: $color-secondary-light;
     position: relative;
     left: 50%;
@@ -87,9 +91,18 @@
     margin-left: -50vw;
     margin-right: -50vw;
 
-    @include mobile {
-        padding: 30px;
-        gap: 37px;
+    &--inner {
+        max-width: 940px;
+        margin: 30px auto;
+        @include flex-between;
+        flex-direction: column;
+        gap: 30px;
+        padding: 0px 70px;
+
+        @include mobile {
+            padding: 30px;
+            gap: 37px;
+        }
     }
 }
 
