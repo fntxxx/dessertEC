@@ -81,6 +81,10 @@
     &:hover {
         transform: translateX(2px);
     }
+
+    &:active {
+        transform: translateX(2px);
+    }
 }
 
 .footer__content {

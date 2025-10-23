@@ -549,6 +549,9 @@ header a {
 .footer__button:hover {
   transform: translateX(2px);
 }
+.footer__button:active {
+  transform: translateX(2px);
+}
 
 .footer__content {
   background-color: #EAF0ED;
@@ -725,6 +728,11 @@ header a {
 }
 .hero__button:hover p {
   color: #3F5D45;
+}
+.hero__button:active {
+  transform: scale(1.05);
+  filter: brightness(1.05);
+  z-index: 2;
 }
 .hero__button:active::before {
   background-color: rgba(255, 225, 128, 0.8);
