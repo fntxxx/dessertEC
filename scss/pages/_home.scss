@@ -82,6 +82,16 @@
             }
         }
 
+        &:active {
+            &::before {
+                background-color: rgba(red($color-primary-light), green($color-primary-light), blue($color-primary-light), 0.8);
+            }
+
+            p {
+                color: $color-primary;
+            }
+        }
+
         &--daily {
             background-image: url("../img/home/btn-daily.avif");
 
@@ -142,7 +152,7 @@
         }
     }
 
-    &__group--inner &__text {
+    &__text {
         @include flex-between;
         align-items: stretch;
         flex-direction: row-reverse;
@@ -184,6 +194,7 @@
             @include mobile {
                 writing-mode: horizontal-tb;
                 text-orientation: sideways;
+                max-height: none
             }
         }
     }
