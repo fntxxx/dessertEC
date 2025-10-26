@@ -77,9 +77,8 @@ export default function home() {
         </div>
     </section>
 
-        <section class="section-products">
+    <section class="section-products">
         <div class="section-products__list">
-
             <div class="section-products__item">
                 <div class="section-products__image">
                     <img src="./img/home/product1.avif" alt="焦糖馬卡龍">
@@ -138,7 +137,6 @@ export default function home() {
             </div>
         </div>
     </section>
-
-  `;
+    `;
     return el;
 }

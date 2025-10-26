@@ -1,0 +1,119 @@
+/* product.scss */
+
+@use "../base" as *;
+@use "../components" as *;
+
+.product-hero {
+    text-align: center;
+    margin-bottom: 60px;
+
+    @include mobile {
+        margin-bottom: 0;
+    }
+
+    &__image-wrapper {
+        width: 100%;
+        overflow: hidden;
+        position: relative;
+    }
+
+    &__image {
+        width: 100%;
+        height: 496px;
+        object-fit: cover;
+
+        @include mobile {
+            height: 277px;
+        }
+    }
+
+    &__slogan--lg {
+        position: absolute;
+        top: 40px;
+        right: 40px;
+        z-index: 2;
+
+        @include mobile {
+            display: none;
+        }
+    }
+
+    &__slogan--sm {
+        display: none;
+
+        @include mobile {
+            display: block;
+            position: absolute;
+            top: 30px;
+            right: 30px;
+            z-index: 2;
+        }
+    }
+}
+
+.product-list {
+    @include flex-between;
+    align-items: flex-start;
+    gap: 10px;
+
+    @include mobile {
+        flex-direction: column;
+        gap: 30px;
+        align-items: center;
+    }
+}
+
+.product-list__category-table {
+    width: 300px;
+    border-collapse: collapse;
+    table-layout: fixed;
+    text-align: center;
+
+    @include mobile {
+        width: 100%;
+    }
+
+    th,
+    td {
+        width: 300px;
+        height: 65px;
+        padding: 0;
+    }
+
+    thead th {
+        background-color: $color-primary;
+        font: normal normal 600 24px/40px $font-primary;
+        color: $color-secondary-light;
+    }
+
+    tbody td {
+        border: 1px solid $color-secondary-light;
+
+        button {
+            width: 100%;
+            height: 100%;
+            border: none;
+            background-color: transparent;
+            cursor: pointer;
+
+            p {
+                margin: 0;
+                font: normal normal 600 24px/40px $font-primary;
+                color: $color-primary;
+            }
+
+            &:hover {
+                background-color: $color-secondary-light;
+            }
+
+            &:active {
+                background-color: $color-secondary-light;
+            }
+        }
+    }
+}
+
+
+.product-card {
+    @include product-card($width: 300px);
+}

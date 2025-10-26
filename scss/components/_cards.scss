@@ -1,0 +1,145 @@
+/* cards.scss */
+
+@use "../base" as *;
+
+@mixin product-card($width: 300px,
+    $image-height: 315px,
+    $color-primary: $color-primary,
+    $color-secondary: $color-secondary-light,
+    $font-family: $font-primary) {
+
+    &__list {
+        @include flex-center;
+        gap: 10px;
+        flex-wrap: wrap;
+        margin: 0 auto;
+
+        @include mobile {
+            flex-direction: column;
+        }
+    }
+
+    &__item {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        width: $width;
+
+        @include mobile {
+            width: calc(#{$width} + 15px);
+        }
+    }
+
+    &__image {
+        position: relative;
+        width: 100%;
+        overflow: hidden;
+
+        img {
+            width: 100%;
+            height: $image-height;
+            object-fit: cover;
+            display: block;
+            transition: transform 0.3s ease;
+
+            .product-card__item:hover & {
+                transform: scale(1.05);
+            }
+        }
+    }
+
+    &__badge {
+        position: absolute;
+        top: 0;
+        left: 20px;
+        background-color: $color-primary;
+        color: $color-secondary;
+        font-weight: 600;
+        font-size: 16px;
+        line-height: 20px;
+        font-family: $font-family;
+        writing-mode: vertical-rl;
+        text-orientation: upright;
+        padding: 10px;
+        z-index: 2;
+    }
+
+    &__fav {
+        @include flex-center;
+        position: absolute;
+        top: 19px;
+        right: 22px;
+        width: 20px;
+        height: 20px;
+        border: none;
+        cursor: pointer;
+        transition: background-color 0.3s ease, transform 0.2s ease;
+        z-index: 2;
+        background-color: transparent;
+
+        img {
+            width: 20px;
+            height: 20px;
+            transition: filter 0.3s ease;
+        }
+
+        &:hover {
+            transform: scale(1.1);
+        }
+    }
+
+    &__info {
+        @include flex-between;
+        width: 100%;
+        height: 56px;
+        border: 1px solid $color-secondary;
+        padding: 14px 0;
+
+        .product-card__name {
+            font-weight: 300;
+            font-size: 20px;
+            line-height: 20px;
+            font-family: $font-family;
+            color: $color-primary;
+            margin-left: 33px;
+        }
+
+        .product-card__price {
+            font-weight: 600;
+            font-size: 20px;
+            line-height: 24px;
+            font-family: $font-family;
+            color: $color-primary;
+            margin-right: 20px;
+        }
+    }
+
+    &__action {
+        width: 100%;
+        display: flex;
+        justify-content: center;
+    }
+
+    &__btn {
+        @include flex-center;
+        width: 100%;
+        height: 65px;
+        border: none;
+        background-color: $color-secondary;
+        cursor: pointer;
+        transition: background-color 0.3s ease, transform 0.3s ease;
+
+        &:hover {
+            transform: scale(1.03);
+        }
+
+        p {
+            margin: 0;
+            font-weight: 600;
+            font-size: 24px;
+            line-height: 20px;
+            font-family: $font-family;
+            color: $color-primary;
+        }
+    }
+}
