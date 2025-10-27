@@ -850,7 +850,7 @@ header a {
   border: 1px solid #EAF0ED;
   padding: 14px 0;
 }
-.section-products__info .product-card__name {
+.section-products__name {
   font-weight: 300;
   font-size: 20px;
   line-height: 20px;
@@ -858,7 +858,7 @@ header a {
   color: #3F5D45;
   margin-left: 33px;
 }
-.section-products__info .product-card__price {
+.section-products__price {
   font-weight: 600;
   font-size: 20px;
   line-height: 24px;
@@ -1088,7 +1088,7 @@ header a {
   border: 1px solid #EAF0ED;
   padding: 14px 0;
 }
-.product-card__info .product-card__name {
+.product-card__name {
   font-weight: 300;
   font-size: 20px;
   line-height: 20px;
@@ -1096,7 +1096,7 @@ header a {
   color: #3F5D45;
   margin-left: 33px;
 }
-.product-card__info .product-card__price {
+.product-card__price {
   font-weight: 600;
   font-size: 20px;
   line-height: 24px;

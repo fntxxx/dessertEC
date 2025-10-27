@@ -138,5 +138,20 @@ export default function home() {
         </div>
     </section>
     `;
+
+    const heroBtn = el.querySelectorAll(".hero__button");
+    heroBtn.forEach(btn => {
+        btn.addEventListener("click", () => {
+            location.hash = "products";
+        });
+    });
+
+    const addToCart = el.querySelectorAll(".section-products__btn");
+    addToCart.forEach(btn => {
+        btn.addEventListener("click", () => {
+            location.hash = "cart";
+        });
+    });
+
     return el;
 }

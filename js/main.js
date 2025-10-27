@@ -14,4 +14,5 @@ loadPage(currentPage);
 window.addEventListener("hashchange", () => {
     const newPage = location.hash.replace("#", "") || "home";
     loadPage(newPage);
+    window.scrollTo({ top: 0, behavior: "smooth" });
 });

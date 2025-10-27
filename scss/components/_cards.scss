@@ -94,25 +94,26 @@
         height: 56px;
         border: 1px solid $color-secondary;
         padding: 14px 0;
-
-        .product-card__name {
-            font-weight: 300;
-            font-size: 20px;
-            line-height: 20px;
-            font-family: $font-family;
-            color: $color-primary;
-            margin-left: 33px;
-        }
-
-        .product-card__price {
-            font-weight: 600;
-            font-size: 20px;
-            line-height: 24px;
-            font-family: $font-family;
-            color: $color-primary;
-            margin-right: 20px;
-        }
     }
+
+    &__name {
+        font-weight: 300;
+        font-size: 20px;
+        line-height: 20px;
+        font-family: $font-family;
+        color: $color-primary;
+        margin-left: 33px;
+    }
+
+    &__price {
+        font-weight: 600;
+        font-size: 20px;
+        line-height: 24px;
+        font-family: $font-family;
+        color: $color-primary;
+        margin-right: 20px;
+    }
+
 
     &__action {
         width: 100%;

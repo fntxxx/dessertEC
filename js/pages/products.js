@@ -176,5 +176,21 @@ export default function products() {
         </div>
     </section>
     `;
+
+    const categoryBtn = el.querySelectorAll(".product-list__category-btn");
+    categoryBtn.forEach(btn => {
+        btn.addEventListener("click", () => {
+            location.hash = "";
+            location.hash = "products";
+        });
+    });
+
+    const addToCart = el.querySelectorAll(".product-card__btn");
+    addToCart.forEach(btn => {
+        btn.addEventListener("click", () => {
+            location.hash = "cart";
+        });
+    });
+
     return el;
 }
