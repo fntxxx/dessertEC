@@ -37,6 +37,14 @@ export default function header() {
         <a href="#products">甜點</a>
         <a href="#login">登入</a>
     </div>
-  `;
+    `;
+
+    const navMenu = el.querySelector(".nav__menu");
+    const navLinks = el.querySelector(".nav__links-bar--sm");
+
+    navMenu.addEventListener("click", () => {
+        navLinks.classList.toggle("active");
+    });
+
     return el;
 }

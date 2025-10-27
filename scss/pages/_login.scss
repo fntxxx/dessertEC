@@ -1,0 +1,184 @@
+/* login.scss */
+
+@use "../base" as *;
+@use "../components" as *;
+
+.login {
+    width: 100%;
+    margin: 60px auto;
+    @include flex-center;
+
+    @include mobile {
+        flex-direction: column;
+        margin: 0;
+    }
+
+    &__container {
+        width: 390px;
+        background-color: $color-primary;
+
+        @include mobile {
+            width: 100%;
+        }
+    }
+
+    &__title {
+        font: normal normal 600 36px/36px $font-primary;
+        color: $color-secondary-light;
+        text-align: center;
+        margin: 40px auto;
+
+        @include mobile {
+            margin: 30px auto;
+        }
+    }
+
+    &__form {
+        display: flex;
+        flex-direction: column;
+    }
+
+    &__field {
+        position: relative;
+        display: flex;
+        align-items: center;
+        background-color: $color-secondary-light;
+        margin: 0 30px;
+        margin-bottom: 16px;
+        padding: 17px 20px;
+
+
+        &:focus-within {
+            border-color: $color-primary;
+        }
+    }
+
+    &__icon {
+        width: 24px;
+        height: 24px;
+        margin-right: 20px;
+
+        img {
+            width: 100%;
+            height: 100%;
+            object-fit: contain;
+        }
+    }
+
+    &__input {
+        flex: 1;
+        min-width: 0;
+        border: none;
+        outline: none;
+        font: normal normal 300 16px/20px $font-primary;
+        color: $color-secondary;
+        background: transparent;
+
+        &::placeholder {
+            color: $color-secondary;
+        }
+    }
+
+    &__remember {
+        margin-left: 30px;
+    }
+
+    &__button {
+        @include flex-center;
+        width: 100%;
+        height: 65px;
+        margin-top: 25px;
+        background-color: $color-primary-light;
+        color: $color-primary;
+        font: normal normal 600 24px/24px $font-primary;
+        border: 1px solid $color-primary-light;
+        cursor: pointer;
+        transition: background-color 0.3s ease, transform 0.3s ease;
+
+        @include mobile {
+            margin-top: 30px;
+        }
+
+        &:hover {
+            background-color: darken($color-primary-light, 5%);
+            transform: scale(1.02);
+        }
+
+        p {
+            color: $color-primary;
+            font: normal normal 600 24px/20px $font-primary;
+        }
+    }
+
+    &__social--lg {
+        @include flex-between;
+        flex-direction: column;
+        text-align: center;
+        background-color: $color-secondary-light;
+        width: 390px;
+        height: 350px;
+
+        @include mobile {
+            display: none;
+        }
+    }
+
+    &__social--sm {
+        display: none;
+
+        @include mobile {
+            @include flex-center;
+            background-color: $color-secondary-light;
+            margin-bottom: 30px;
+        }
+    }
+
+    &__social-title {
+        font: normal normal 300 24px/36px $font-primary;
+        color: $color-secondary;
+        margin: 40px auto 36px;
+    }
+
+    &__social-list {
+        @include flex-center;
+        flex-direction: column;
+        list-style: none;
+        gap: 16px;
+        margin-bottom: 41px;
+
+        @include mobile {
+            flex-direction: row;
+            gap: 1px;
+            margin: 30px auto;
+        }
+    }
+
+    &__social-item {
+        display: flex;
+    }
+
+    &__social-btn {
+        @include flex-center;
+        width: 330px;
+        height: 56px;
+        background-color: $color-white;
+        border: none;
+        cursor: pointer;
+        transition: background-color 0.3s ease, transform 0.3s ease;
+
+
+        @include mobile {
+            width: 105px;
+        }
+
+        img {
+            object-fit: contain;
+        }
+
+        &:hover {
+            transform: scale(1.05);
+        }
+    }
+
+
+}

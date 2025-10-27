@@ -30,6 +30,10 @@ header {
         @include flex-center;
         width: 24px;
         height: 24px;
+
+        &:hover {
+            transform: scale(1.1);
+        }
     }
 }
 
@@ -65,7 +69,9 @@ header {
 
 .nav__links-bar--sm {
     display: none;
+}
 
+.nav__links-bar--sm.active {
     @include mobile {
         display: flex;
         justify-content: space-evenly;
