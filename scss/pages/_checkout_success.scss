@@ -1,0 +1,106 @@
+/* checkout3.scss */
+
+@use "../base" as *;
+@use "../components" as *;
+
+/* ================================
+   結帳成功頁樣式
+   檔案：checkout-success.scss
+   ================================ */
+
+.checkout-success {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    margin-bottom: 60px;
+
+    @include mobile {
+        margin-bottom: 0;
+    }
+
+    &__container {
+        position: relative;
+        width: 940px;
+        height: 460px;
+
+        @include mobile {
+            height: 518px;
+        }
+    }
+
+    /* 主視覺圖片 */
+    &__image {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        display: block;
+    }
+
+    /* 覆蓋在主視覺上的內容 */
+    &__content {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+
+        text-align: center;
+    }
+
+    /* 進度條區（暫放） */
+    &__progress {
+        margin-bottom: 32px;
+        color: $color-primary;
+        font-size: 14px;
+    }
+
+    /* 成功圖示 */
+    &__icon {
+        margin-bottom: 50px;
+
+        @include mobile {
+            margin-bottom: 0;
+        }
+    }
+
+    /* 按鈕樣式 */
+    &__button {
+        background-color: $color-primary-light;
+        color: $color-primary;
+        font: normal normal 600 24px/20px $font-primary ;
+        width: 300px;
+        height: 65px;
+        border: none;
+        cursor: pointer;
+        transition: background-color 0.3s ease;
+
+        p {
+            margin: 0;
+        }
+
+        &:hover {
+            transform: scale(1.03);
+        }
+
+        &--lg {
+            @include mobile {
+                display: none;
+            }
+        }
+
+        &--sm {
+            display: none;
+
+            @include mobile {
+                display: block;
+                width: 100%;
+            }
+        }
+    }
+}

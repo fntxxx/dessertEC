@@ -20,7 +20,7 @@
     // 左側內容區：購物車商品列表
     // --------------------------
     &__content {
-        flex: 2;
+        flex: 620;
 
         @include mobile {
             flex: 1;
@@ -198,7 +198,7 @@
     // 右側內容區：訂單摘要
     // --------------------------
     &__summary {
-        flex: 1;
+        flex: 300;
         background-color: $color-primary;
 
         @include mobile {

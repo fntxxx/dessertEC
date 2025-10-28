@@ -42,7 +42,7 @@
             display: block;
             transition: transform 0.3s ease;
 
-            .product-card__item:hover & {
+            &:hover {
                 transform: scale(1.05);
             }
         }

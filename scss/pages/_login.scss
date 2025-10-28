@@ -80,7 +80,20 @@
     }
 
     &__remember {
-        margin-left: 30px;
+        margin: 0 30px;
+        display: flex;
+        align-items: center;
+        gap: 8px;
+    }
+
+    &__checkbox {
+        width: 16px;
+        height: 16px;
+    }
+
+    &__checkbox-label {
+        font: normal normal 600 16px/16px $font-primary;
+        color: $color-secondary-light;
     }
 
     &__button {
