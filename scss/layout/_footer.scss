@@ -1,171 +1,162 @@
 /* footer.scss */
-
 @use "../base" as *;
 @use "../components" as *;
 
-.footer__subscription {
-    background-color: $color-primary;
+/* === 共用樣式 === */
+%full-width {
     position: relative;
     left: 50%;
-    right: 50%;
     width: 100vw;
     margin-left: -50vw;
-    margin-right: -50vw;
     padding: 30px 0;
+}
 
+%footer-inner {
+    max-width: 940px;
+    margin: 0 auto;
+    padding: 0 70px;
+}
 
-    &--inner {
+/* === 訂閱區 === */
+.footer {
+    &__subscription {
+        @extend %full-width;
+        background: $color-primary;
+
+        &--inner {
+            @extend %footer-inner;
+            @include flex-between;
+            flex-wrap: nowrap;
+
+            @include mobile {
+                flex-direction: column;
+                gap: 30px;
+            }
+        }
+
+        &-info {
+            @include flex-between;
+            gap: 20px;
+
+            p {
+                font: 24px/29px $font-secondary;
+                color: $color-secondary-light;
+                white-space: nowrap;
+            }
+        }
+
+        &-form {
+            @include flex-center;
+            background: $color-secondary-light;
+            flex: 1;
+            min-width: 0;
+            max-width: 380px;
+
+            @include mobile {
+                max-width: 315px;
+            }
+        }
+    }
+
+    &__ic-mail,
+    &__button {
+        @include flex-center;
+        width: 64px;
+        height: 56px;
+    }
+
+    &__input {
+        background: $color-secondary-light;
+        height: 56px;
+        border: none;
+        outline: none;
+        text-align: right;
+        flex: 1;
+        min-width: 0;
+    }
+
+    &__button {
+        background: $color-primary-light;
+        border: none;
+        cursor: pointer;
+        transition: transform 0.2s ease;
+
+        &:hover,
+        &:active {
+            transform: translateX(2px);
+        }
+    }
+
+    /* === 主內容區 === */
+    &__content {
+        @extend %full-width;
+        background: $color-secondary-light;
+
+        &--inner {
+            @extend %footer-inner;
+            @include flex-between;
+            flex-direction: column;
+            gap: 30px;
+
+            @include mobile {
+                padding: 30px;
+                gap: 37px;
+            }
+        }
+    }
+
+    /* === 其他區塊 === */
+    &__info,
+    &__social {
         @include flex-between;
-        max-width: 940px;
-        margin: 0 auto;
+        width: 100%;
+    }
+
+    &__brand,
+    &__contact {
+        @include flex-between;
+        flex-direction: column;
+        align-items: flex-start;
+    }
+
+    &__brand {
+        gap: 115.5px;
+
+        @include mobile {
+            gap: 39.5px;
+        }
+    }
+
+    &__contact p {
+        font: 16px/24px $font-secondary;
+        color: $color-primary;
+    }
+
+    &__slogan {
+        @include mobile {
+            display: none;
+        }
+    }
+
+    &__social {
         flex-wrap: nowrap;
-        padding: 0px 70px;
 
         @include mobile {
             flex-direction: column;
-            gap: 30px;
+            align-items: flex-start;
+            gap: 23px;
+        }
+
+        &-icons {
+            @include flex-between;
+            gap: 8px;
+            flex-wrap: nowrap;
         }
     }
-}
 
-.footer__subscription-info {
-    @include flex-between;
-    gap: 20px;
-
-    p {
-        font: normal normal normal 24px/29px $font-secondary;
-        letter-spacing: 0px;
-        color: $color-secondary-light;
-        white-space: nowrap;
-    }
-}
-
-.footer__subscription-form {
-    @include flex-center;
-    background-color: $color-secondary-light;
-    flex: 1;
-    min-width: 0;
-    max-width: 380px;
-
-    @include mobile {
-        max-width: 315px;
-    }
-}
-
-.footer__ic-mail {
-    @include flex-center;
-    width: 64px;
-    height: 56px;
-}
-
-.footer__input {
-    background-color: $color-secondary-light;
-    height: 56px;
-    outline: none;
-    text-align: right;
-    border: none;
-    flex: 1;
-    min-width: 0;
-}
-
-.footer__button {
-    @include flex-center;
-    width: 64px;
-    height: 56px;
-    background-color: $color-primary-light;
-    cursor: pointer;
-    transition: transform 0.2s ease;
-    border: none;
-
-    &:hover {
-        transform: translateX(2px);
-    }
-
-    &:active {
-        transform: translateX(2px);
-    }
-}
-
-.footer__content {
-    background-color: $color-secondary-light;
-    position: relative;
-    left: 50%;
-    right: 50%;
-    width: 100vw;
-    margin-left: -50vw;
-    margin-right: -50vw;
-    padding: 30px 0;
-
-    &--inner {
-        max-width: 940px;
-        margin: 0 auto;
-        @include flex-between;
-        flex-direction: column;
-        gap: 30px;
-        padding: 0px 70px;
-
-        @include mobile {
-            padding: 30px;
-            gap: 37px;
-        }
-    }
-}
-
-.footer__info {
-    @include flex-between;
-    width: 100%;
-}
-
-.footer__brand {
-    @include flex-between;
-    flex-direction: column;
-    align-items: flex-start;
-    gap: 115.5px;
-
-    @include mobile {
-        gap: 39.5px;
-    }
-}
-
-.footer__contact {
-    @include flex-between;
-    flex-direction: column;
-    align-items: flex-start;
-
-    p {
-        font: normal normal normal 16px/24px $font-secondary;
-        letter-spacing: 0px;
+    &__copyright {
+        font: 16px/19px $font-serif;
         color: $color-primary;
+        text-align: right;
     }
-}
-
-.footer__slogan {
-    @include mobile {
-        display: none;
-    }
-}
-
-.footer__social {
-    @include flex-between;
-    width: 100%;
-    flex-wrap: nowrap;
-
-    @include mobile {
-        flex-direction: column;
-        align-items: flex-start;
-        gap: 23px;
-    }
-}
-
-.footer__social-icons {
-    @include flex-between;
-    gap: 8px;
-    flex-wrap: nowrap;
-}
-
-.footer__copyright {
-    font: normal normal normal 16px/19px $font-serif;
-    letter-spacing: 0px;
-    color: $color-primary;
-    text-align: right;
 }

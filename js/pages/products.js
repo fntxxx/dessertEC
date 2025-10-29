@@ -58,121 +58,7 @@ export default function products() {
         </div>
 
         <div class="product-card">
-            <div class="product-card__list">
-                <div class="product-card__item">
-                    <div class="product-card__image">
-                        <img src="./img/product/product1.avif" alt="焦糖馬卡龍">
-                        <div class="product-card__badge">本日精選</div>
-                        <button class="product-card__fav">
-                            <img src="./img/ic-favorite.png" alt="加入收藏">
-                        </button>
-                    </div>
-                    <div class="product-card__info">
-                        <p class="product-card__name">焦糖馬卡龍</p>
-                        <p class="product-card__price">NT$ 450</p>
-                    </div>
-                    <div class="product-card__action">
-                        <button class="product-card__btn">
-                            <p>加入購物車</p>
-                        </button>
-                    </div>
-                </div>
-
-                <div class="product-card__item">
-                    <div class="product-card__image">
-                        <img src="./img/product/product2.avif" alt="焦糖馬卡龍">
-                        <div class="product-card__badge">本日精選</div>
-                        <button class="product-card__fav">
-                            <img src="./img/ic-favorite.png" alt="加入收藏">
-                        </button>
-                    </div>
-                    <div class="product-card__info">
-                        <p class="product-card__name">焦糖馬卡龍</p>
-                        <p class="product-card__price">NT$ 450</p>
-                    </div>
-                    <div class="product-card__action">
-                        <button class="product-card__btn">
-                            <p>加入購物車</p>
-                        </button>
-                    </div>
-                </div>
-
-                <div class="product-card__item">
-                    <div class="product-card__image">
-                        <img src="./img/product/product3.avif" alt="焦糖馬卡龍">
-                        <div class="product-card__badge">本日精選</div>
-                        <button class="product-card__fav">
-                            <img src="./img/ic-favorite.png" alt="加入收藏">
-                        </button>
-                    </div>
-                    <div class="product-card__info">
-                        <p class="product-card__name">焦糖馬卡龍</p>
-                        <p class="product-card__price">NT$ 450</p>
-                    </div>
-                    <div class="product-card__action">
-                        <button class="product-card__btn">
-                            <p>加入購物車</p>
-                        </button>
-                    </div>
-                </div>
-
-                <div class="product-card__item">
-                    <div class="product-card__image">
-                        <img src="./img/product/product4.avif" alt="焦糖馬卡龍">
-                        <div class="product-card__badge">本日精選</div>
-                        <button class="product-card__fav">
-                            <img src="./img/ic-favorite.png" alt="加入收藏">
-                        </button>
-                    </div>
-                    <div class="product-card__info">
-                        <p class="product-card__name">焦糖馬卡龍</p>
-                        <p class="product-card__price">NT$ 450</p>
-                    </div>
-                    <div class="product-card__action">
-                        <button class="product-card__btn">
-                            <p>加入購物車</p>
-                        </button>
-                    </div>
-                </div>
-
-                <div class="product-card__item">
-                    <div class="product-card__image">
-                        <img src="./img/product/product5.avif" alt="焦糖馬卡龍">
-                        <div class="product-card__badge">本日精選</div>
-                        <button class="product-card__fav">
-                            <img src="./img/ic-favorite.png" alt="加入收藏">
-                        </button>
-                    </div>
-                    <div class="product-card__info">
-                        <p class="product-card__name">焦糖馬卡龍</p>
-                        <p class="product-card__price">NT$ 450</p>
-                    </div>
-                    <div class="product-card__action">
-                        <button class="product-card__btn">
-                            <p>加入購物車</p>
-                        </button>
-                    </div>
-                </div>
-
-                <div class="product-card__item">
-                    <div class="product-card__image">
-                        <img src="./img/product/product6.avif" alt="焦糖馬卡龍">
-                        <div class="product-card__badge">本日精選</div>
-                        <button class="product-card__fav">
-                            <img src="./img/ic-favorite.png" alt="加入收藏">
-                        </button>
-                    </div>
-                    <div class="product-card__info">
-                        <p class="product-card__name">焦糖馬卡龍</p>
-                        <p class="product-card__price">NT$ 450</p>
-                    </div>
-                    <div class="product-card__action">
-                        <button class="product-card__btn">
-                            <p>加入購物車</p>
-                        </button>
-                    </div>
-                </div>
-            </div>
+            <div class="product-card__list"></div>
 
             <div class="product-card__turn-page">
                 <button class="turn-page__btn turn-page__btn--prev">
@@ -194,6 +80,69 @@ export default function products() {
         </div>
     </section>
     `;
+
+    const productList = el.querySelector(".product-card__list");
+    const productsData = [
+        {
+            name: "焦糖馬卡龍",
+            price: 450,
+            image: "./img/product/product1.avif",
+            badge: "本日精選"
+        },
+        {
+            name: "焦糖馬卡龍",
+            price: 450,
+            image: "./img/product/product2.avif",
+            badge: "人氣推薦"
+        },
+        {
+            name: "焦糖馬卡龍",
+            price: 450,
+            image: "./img/product/product3.avif",
+            badge: "新品上市"
+        },
+        {
+            name: "焦糖馬卡龍",
+            price: 450,
+            image: "./img/product/product4.avif",
+            badge: "本日精選"
+        },
+        {
+            name: "焦糖馬卡龍",
+            price: 450,
+            image: "./img/product/product5.avif",
+            badge: "本日精選"
+        },
+        {
+            name: "焦糖馬卡龍",
+            price: 450,
+            image: "./img/product/product6.avif",
+            badge: "本日精選"
+        },
+    ];
+
+    // 動態生成商品
+    productsData.forEach(item => {
+        const productEl = document.createElement("div");
+        productEl.classList.add("product-card__item");
+        productEl.innerHTML = `
+            <div class="product-card__image">
+                <img src="${item.image}" alt="${item.name}">
+                <div class="product-card__badge">${item.badge}</div>
+                <button class="product-card__fav">
+                    <img src="./img/ic-favorite.png" alt="加入收藏">
+                </button>
+            </div>
+            <div class="product-card__info">
+                <p class="product-card__name">${item.name}</p>
+                <p class="product-card__price">NT$ ${item.price}</p>
+            </div>
+            <div class="product-card__action">
+                <button class="product-card__btn"><p>加入購物車</p></button>
+            </div>
+        `;
+        productList.appendChild(productEl);
+    });
 
     // 商品分類按鈕
     const categoryButtons = el.querySelectorAll(".product-list__category-btn");

@@ -3,6 +3,7 @@
 @use "../base" as *;
 @use "../components" as *;
 
+/* Product Hero */
 .product-hero {
     text-align: center;
     margin-bottom: 60px;
@@ -27,11 +28,15 @@
         }
     }
 
-    &__slogan--lg {
+    &__slogan--lg,
+    &__slogan--sm {
         position: absolute;
-        top: 40px;
         right: 40px;
         z-index: 2;
+    }
+
+    &__slogan--lg {
+        top: 40px;
 
         @include mobile {
             display: none;
@@ -43,14 +48,13 @@
 
         @include mobile {
             display: block;
-            position: absolute;
             top: 30px;
             right: 30px;
-            z-index: 2;
         }
     }
 }
 
+/* Product List */
 .product-list {
     @include flex-between;
     align-items: flex-start;
@@ -62,63 +66,57 @@
         gap: 30px;
         align-items: center;
     }
-}
 
-.product-list__categories {
-    flex: 300;
-}
+    &__categories {
+        flex: 300;
+    }
 
-.product-list__category-table {
-    border-collapse: collapse;
-    table-layout: fixed;
-    text-align: center;
-    width: 100%;
-
-    @include mobile {
+    &__category-table {
         width: 100%;
-    }
+        border-collapse: collapse;
+        table-layout: fixed;
+        text-align: center;
 
-    th,
-    td {
-        width: 100%;
-        height: 65px;
-        padding: 0;
-    }
-
-    thead th {
-        background-color: $color-primary;
-        font: normal normal 600 24px/40px $font-primary;
-        color: $color-secondary-light;
-    }
-
-    tbody td {
-        border: 1px solid $color-secondary-light;
-
-        button {
+        th,
+        td {
             width: 100%;
-            height: 100%;
-            border: none;
-            background-color: transparent;
-            cursor: pointer;
+            height: 65px;
+            padding: 0;
+        }
 
-            p {
-                margin: 0;
-                font: normal normal 600 24px/40px $font-primary;
-                color: $color-primary;
-            }
+        thead th {
+            background-color: $color-primary;
+            color: $color-secondary-light;
+            font: 600 24px/40px $font-primary;
+        }
 
-            &:hover {
-                background-color: $color-secondary-light;
-            }
+        tbody td {
+            border: 1px solid $color-secondary-light;
 
-            &:active {
-                background-color: $color-secondary-light;
+            button {
+                width: 100%;
+                height: 100%;
+                border: none;
+                background: transparent;
+                cursor: pointer;
+                transition: background-color 0.3s ease;
+
+                p {
+                    margin: 0;
+                    color: $color-primary;
+                    font: 600 24px/40px $font-primary;
+                }
+
+                &:hover,
+                &:active {
+                    background-color: $color-secondary-light;
+                }
             }
         }
     }
 }
 
-
+/* Product Card */
 .product-card {
     flex: 620;
     @include product-card($width: 300px);
@@ -130,12 +128,14 @@
     }
 }
 
+/* Pagination */
 .turn-page {
     &__btn {
-        background-color: transparent;
+        background: transparent;
         border: 1px solid $color-secondary-light;
         width: 60px;
         height: 60px;
+        transition: background-color 0.3s ease;
 
         &:hover {
             background-color: $color-secondary-light;
@@ -143,9 +143,9 @@
     }
 
     &__number {
-        color: $color-primary;
-        font: normal normal 300 20px/58px $font-primary;
         text-align: center;
+        color: $color-primary;
+        font: 300 20px/58px $font-primary;
 
         &--active {
             color: $color-secondary-light;

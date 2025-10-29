@@ -12,13 +12,13 @@
 html,
 body {
     overflow-x: hidden;
-    overflow-y: scroll;
-    scrollbar-width: none;
-    -ms-overflow-style: none;
+    // overflow-y: scroll;
+    // scrollbar-width: none;
+    // -ms-overflow-style: none;
     font-family: $font-primary;
 }
 
-html::-webkit-scrollbar,
-body::-webkit-scrollbar {
-    display: none;
-}
+// html::-webkit-scrollbar,
+// body::-webkit-scrollbar {
+//     display: none;
+// }

@@ -3,6 +3,7 @@
 @use "../base" as *;
 @use "../components" as *;
 
+/* Hero Section */
 .hero {
     text-align: center;
 
@@ -23,7 +24,7 @@
 
     &__category-buttons {
         @include flex-center;
-        margin: -89px 70px 0 70px;
+        margin: -89px 70px 0;
 
         @include mobile {
             margin: 0;
@@ -32,15 +33,13 @@
 
     &__button {
         @include flex-center;
+        position: relative;
         width: 100%;
         height: 256px;
-        border: $color-white solid 1px;
+        border: 1px solid $color-white;
         cursor: pointer;
-        position: relative;
         overflow: hidden;
-        background-size: cover;
-        background-position: center;
-        background-repeat: no-repeat;
+        background: center / cover no-repeat;
         transition: transform 0.3s ease, filter 0.3s ease;
 
         @include mobile {
@@ -53,7 +52,7 @@
             inset: 0;
             background-color: rgba(red($color-primary), green($color-primary), blue($color-primary), 0.8);
             pointer-events: none;
-            transition: opacity 0.3s ease;
+            transition: background-color 0.3s ease;
             z-index: 1;
             backdrop-filter: blur(5px);
             -webkit-backdrop-filter: blur(5px);
@@ -65,23 +64,10 @@
             color: $color-white;
             writing-mode: vertical-rl;
             text-orientation: upright;
-            font: normal normal 600 24px/30px $font-primary;
+            font: 600 24px/30px $font-primary;
         }
 
-        &:hover {
-            transform: scale(1.05);
-            filter: brightness(1.05);
-            z-index: 2;
-
-            &::before {
-                background-color: rgba(red($color-primary-light), green($color-primary-light), blue($color-primary-light), 0.8);
-            }
-
-            p {
-                color: $color-primary;
-            }
-        }
-
+        &:hover,
         &:active {
             transform: scale(1.05);
             filter: brightness(1.05);
@@ -96,9 +82,9 @@
             }
         }
 
+        /* 背景圖三種 */
         &--daily {
             background-image: url("../img/home/btn-daily.avif");
-
         }
 
         &--popular {
@@ -111,23 +97,25 @@
     }
 }
 
+/* Why Choose Section */
 .section-why-choose {
     display: flex;
     flex-direction: column;
+    margin: 80px 0;
+    gap: 105px;
+
+    @include mobile {
+        margin: 30px 0;
+        gap: 30px;
+    }
 
     &__group {
         background-color: $color-secondary-light;
         position: relative;
         left: 50%;
-        right: 50%;
         width: 100vw;
         margin-left: -50vw;
         margin-right: -50vw;
-        margin-top: 80px;
-
-        @include mobile {
-            margin-top: 0;
-        }
 
         &--inner {
             @include flex-between;
@@ -137,29 +125,24 @@
 
             @include mobile {
                 flex-direction: column;
-                height: auto;
-                margin: 0px;
+                margin: 0;
             }
-
         }
 
-        &:nth-of-type(4) {
-            .section-why-choose__group--inner {
-                flex-direction: row-reverse;
+        &:nth-of-type(4) .section-why-choose__group--inner {
+            flex-direction: row-reverse;
 
-                @include mobile {
-                    flex-direction: column;
-                    height: auto;
-                    margin: 0px;
-                }
+            @include mobile {
+                flex-direction: column;
+                margin: 0;
             }
         }
     }
 
     &__text {
         @include flex-between;
-        align-items: stretch;
         flex-direction: row-reverse;
+        align-items: stretch;
         gap: 80px;
 
         @include mobile {
@@ -167,50 +150,41 @@
         }
     }
 
-    &__title {
-        img {
-            width: 90px;
-            height: auto;
-        }
+    &__title img {
+        width: 90px;
+        height: auto;
+    }
 
-        @include mobile {
+    @include mobile {
+        &__title {
             display: none;
         }
     }
 
-
     &__description {
         @include flex-center;
-
-        @include mobile {
-            height: auto;
-        }
 
         p {
             color: $color-secondary;
             writing-mode: vertical-rl;
             text-orientation: upright;
-            font: normal normal 300 16px/40px $font-primary;
-            letter-spacing: 0px;
-            color: $color-secondary;
+            font: 300 16px/40px $font-primary;
             max-height: 280px;
 
             @include mobile {
                 writing-mode: horizontal-tb;
-                text-orientation: sideways;
-                max-height: none
+                max-height: none;
             }
         }
     }
-
 
     &__image {
         @include flex-center;
 
         @include mobile {
             display: block;
-            margin: 0;
             width: 100%;
+            margin: 0;
         }
 
         img {
@@ -221,33 +195,29 @@
 
             @include mobile {
                 height: 250px;
-                aspect-ratio: auto;
+                width: 100vw;
                 position: relative;
                 left: 50%;
-                right: 50%;
-                width: 100vw;
                 margin-left: -50vw;
-                margin-right: -50vw;
+                aspect-ratio: auto;
                 max-width: none;
             }
         }
     }
 
-    &__text-only--lg {
+    &__text-only--lg,
+    &__text-only--sm {
         display: flex;
         justify-content: center;
-        margin-top: 95px;
-        margin-bottom: 20px;
 
         img {
             width: 100%;
-            max-width: 90px;
             height: auto;
         }
+    }
 
-        @include mobile {
-            display: none;
-        }
+    &__text-only--lg img {
+        max-width: 90px;
     }
 
     &__text-only--sm {
@@ -255,25 +225,28 @@
 
         @include mobile {
             display: flex;
-            justify-content: center;
-            margin: 30px auto;
+            margin: 0 auto;
 
             img {
-                width: 100%;
                 min-width: 196px;
-                height: auto;
             }
+        }
+    }
+
+    @include mobile {
+        &__text-only--lg {
+            display: none;
         }
     }
 }
 
+/* Products Section */
 .section-products {
     width: 100%;
-    margin: 60px auto;
+    margin-bottom: 60px;
 
     @include mobile {
-        margin-top: 0;
-        margin-bottom: 30px;
+        margin: 0 0 30px;
     }
 
     @include product-card($width: 300px);
