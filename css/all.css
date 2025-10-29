@@ -205,7 +205,6 @@ body::-webkit-scrollbar {
 }
 
 /* mixin.scss */
-/* typography.scss */
 /* cards.scss */
 /* container.scss */
 .container {
@@ -769,7 +768,8 @@ header a {
   display: flex;
   justify-content: center;
   align-items: center;
-  gap: 10px;
+  gap: 20px;
+  width: 100%;
   flex-wrap: wrap;
   margin: 0 auto;
 }
@@ -949,7 +949,8 @@ header a {
   justify-content: space-between;
   align-items: center;
   align-items: flex-start;
-  gap: 10px;
+  gap: 20px;
+  margin-bottom: 60px;
 }
 @media (max-width: 568px) {
   .product-list {
@@ -959,11 +960,15 @@ header a {
   }
 }
 
+.product-list__categories {
+  flex: 300;
+}
+
 .product-list__category-table {
-  width: 300px;
   border-collapse: collapse;
   table-layout: fixed;
   text-align: center;
+  width: 100%;
 }
 @media (max-width: 568px) {
   .product-list__category-table {
@@ -972,7 +977,7 @@ header a {
 }
 .product-list__category-table th,
 .product-list__category-table td {
-  width: 300px;
+  width: 100%;
   height: 65px;
   padding: 0;
 }
@@ -1003,11 +1008,15 @@ header a {
   background-color: #EAF0ED;
 }
 
+.product-card {
+  flex: 620;
+}
 .product-card__list {
   display: flex;
   justify-content: center;
   align-items: center;
-  gap: 10px;
+  gap: 20px;
+  width: 100%;
   flex-wrap: wrap;
   margin: 0 auto;
 }
@@ -1131,6 +1140,32 @@ header a {
   line-height: 20px;
   font-family: "PingFang TC", "Noto Sans TC", "Microsoft JhengHei", sans-serif;
   color: #3F5D45;
+}
+.product-card__turn-page {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  justify-content: flex-end;
+  margin-top: 30px;
+}
+
+.turn-page__btn {
+  background-color: transparent;
+  border: 1px solid #EAF0ED;
+  width: 60px;
+  height: 60px;
+}
+.turn-page__btn:hover {
+  background-color: #EAF0ED;
+}
+.turn-page__number {
+  color: #3F5D45;
+  font: normal normal 300 20px/58px "PingFang TC", "Noto Sans TC", "Microsoft JhengHei", sans-serif;
+  text-align: center;
+}
+.turn-page__number--active {
+  color: #EAF0ED;
+  background-color: #3F5D45;
 }
 
 /* login.scss */
@@ -1329,6 +1364,9 @@ header a {
   width: 100%;
   gap: 20px;
   margin-bottom: 39px;
+  /* 左側內容區：購物車商品列表 */
+  /* 單一商品項目 */
+  /* 右側內容區：訂單摘要 */
 }
 @media (max-width: 568px) {
   .cart {
@@ -1580,284 +1618,107 @@ header a {
   transform: scale(1.02);
 }
 
-/* checkout1.scss */
-.checkout-shipping {
+/* _checkout.scss */
+/* 共用結帳主體 */
+.checkout {
   display: flex;
   justify-content: center;
   align-items: center;
   align-items: flex-start;
   max-width: 780px;
-  margin: 0 auto;
+  margin: 0 auto 65px;
   gap: 20px;
-  margin-bottom: 65px;
   /* 表單區 */
-  /* 姓名區塊 */
-  /* 地址下拉選單 */
-  /* 下一步按鈕 */
-  /* 右側資訊欄位 */
-}
-@media (max-width: 568px) {
-  .checkout-shipping {
-    width: 100%;
-    margin-bottom: 0;
-  }
-}
-.checkout-shipping__form {
-  margin: 0;
-  background-color: #3F5D45;
-  flex: 460;
-}
-.checkout-shipping__fieldset {
-  border: none;
-  display: flex;
-  flex-direction: column;
-  margin: 30px;
-  gap: 16px;
-}
-.checkout-shipping__header {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-}
-.checkout-shipping__title {
-  font: normal normal 600 36px/36px "PingFang TC", "Noto Sans TC", "Microsoft JhengHei", sans-serif;
-  color: #EAF0ED;
-  margin-bottom: 14px;
-}
-.checkout-shipping__progress {
-  height: 8px;
-  background-color: #EAF0ED;
-}
-.checkout-shipping__name-group {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  gap: 8px;
-}
-.checkout-shipping__field {
-  display: flex;
-  flex-direction: column;
-  flex: 1;
-  gap: 8px;
-}
-.checkout-shipping__field--address {
-  flex: 1 1 100%;
-}
-.checkout-shipping__label {
-  color: #EAF0ED;
-  font: normal normal 600 20px/20px "PingFang TC", "Noto Sans TC", "Microsoft JhengHei", sans-serif;
-}
-.checkout-shipping__input {
-  width: 100%;
-  padding: 17px 20px;
-  background-color: #EAF0ED;
-  color: #3F5D45;
-  font: normal normal 300 16px/20px "PingFang TC", "Noto Sans TC", "Microsoft JhengHei", sans-serif;
-  border: #EAF0ED 3px solid;
-}
-.checkout-shipping__input::placeholder {
-  color: #8DA291;
-  font: normal normal 300 16px/20px "PingFang TC", "Noto Sans TC", "Microsoft JhengHei", sans-serif;
-}
-.checkout-shipping__input:focus {
-  outline: none;
-  border-color: #FFE180;
-}
-.checkout-shipping__select-group {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  gap: 8px;
-}
-.checkout-shipping__select {
-  width: 100%;
-  padding: 17px 20px;
-  background-color: #EAF0ED;
-  color: #3F5D45;
-  font: normal normal 300 16px/20px "PingFang TC", "Noto Sans TC", "Microsoft JhengHei", sans-serif;
-  border: #EAF0ED 3px solid;
-}
-.checkout-shipping__button {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  width: 100%;
-  height: 65px;
-  background-color: #FFE180;
-  border: none;
-  cursor: pointer;
-  transition: transform 0.3s ease, background-color 0.3s ease;
-}
-.checkout-shipping__button:hover {
-  transform: scale(1.03);
-}
-.checkout-shipping__button p {
-  font: normal normal 600 24px/24px "PingFang TC", "Noto Sans TC", "Microsoft JhengHei", sans-serif;
-  color: #3F5D45;
-  margin: 0;
-}
-.checkout-shipping__side {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  flex-direction: column;
-  gap: 20px;
-  flex: 300;
-}
-@media (max-width: 568px) {
-  .checkout-shipping__side {
-    display: none;
-  }
-}
-
-/* 訂單摘要區 */
-.checkout-summary {
-  width: 100%;
-  border: 1px solid #EAF0ED;
-}
-.checkout-summary__title {
-  font: normal normal 600 24px/65px "PingFang TC", "Noto Sans TC", "Microsoft JhengHei", sans-serif;
-  color: #8DA291;
-  background-color: #EAF0ED;
-  text-align: center;
-}
-.checkout-summary__list {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  flex-direction: column;
-  padding: 16px 20px;
-  gap: 8px;
-}
-.checkout-summary__item {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  font: normal normal 300 16px/20px "PingFang TC", "Noto Sans TC", "Microsoft JhengHei", sans-serif;
-  color: #8DA291;
-  width: 100%;
-}
-.checkout-summary__item--total {
-  margin-top: 8px;
-  font: normal normal 600 20px/20px "PingFang TC", "Noto Sans TC", "Microsoft JhengHei", sans-serif;
-}
-
-/* 購物清單區 */
-.checkout-cart {
-  width: 100%;
-  border: 1px solid #EAF0ED;
-}
-.checkout-cart__title {
-  font: normal normal 600 24px/65px "PingFang TC", "Noto Sans TC", "Microsoft JhengHei", sans-serif;
-  color: #8DA291;
-  background-color: #EAF0ED;
-  text-align: center;
-}
-.checkout-cart__list {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  flex-direction: column;
-  padding: 16px 20px;
-  gap: 16px;
-}
-.checkout-cart__item {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  width: 100%;
-}
-.checkout-cart__image-wrapper {
-  width: 120px;
-  height: 80px;
-  overflow: hidden;
-}
-.checkout-cart__image {
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
-  display: block;
-}
-.checkout-cart__details {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  align-items: flex-start;
-  flex-direction: column;
-  gap: 2px;
-}
-.checkout-cart__name {
-  font: normal normal 300 16px/20px "PingFang TC", "Noto Sans TC", "Microsoft JhengHei", sans-serif;
-  color: #8DA291;
-}
-.checkout-cart__price {
-  font: normal normal 600 20px/20px "PingFang TC", "Noto Sans TC", "Microsoft JhengHei", sans-serif;
-  color: #8DA291;
-}
-
-/* checkout2.scss */
-/* ===== 結帳付款主區 ===== */
-.checkout-payment {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  align-items: flex-start;
-  max-width: 780px;
-  margin: 0 auto;
-  gap: 20px;
-  margin-bottom: 65px;
-  /* 表單區 */
-  /* 卡號、姓名、期限、CVC 區塊 */
+  /* 輸入欄位共用設定 */
+  /* 選單群組 */
+  /* 同行輸入群組（姓名、信用卡等） */
   /* 下一步按鈕 */
   /* 右側資訊欄 */
 }
 @media (max-width: 568px) {
-  .checkout-payment {
+  .checkout {
     width: 100%;
     margin-bottom: 0;
   }
 }
-.checkout-payment__form {
+.checkout__form {
   margin: 0;
   background-color: #3F5D45;
   flex: 460;
 }
-.checkout-payment__fieldset {
+.checkout__fieldset {
   border: none;
   display: flex;
   flex-direction: column;
   margin: 30px;
   gap: 16px;
 }
-.checkout-payment__header {
+.checkout__header {
   display: flex;
   justify-content: space-between;
   align-items: center;
 }
-.checkout-payment__title {
+.checkout__title {
   font: normal normal 600 36px/36px "PingFang TC", "Noto Sans TC", "Microsoft JhengHei", sans-serif;
   color: #EAF0ED;
   margin-bottom: 14px;
 }
-.checkout-payment__progress {
-  height: 8px;
+.checkout__progress {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.checkout__progress-circle {
+  width: 20px;
+  height: 20px;
+  border-radius: 50%;
+  border: 1px solid #8DA291;
+  background-color: transparent;
+  transition: background-color 0.3s ease;
+}
+.checkout__progress-circle--active {
+  border-color: #EAF0ED;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.checkout__progress-circle--done {
   background-color: #EAF0ED;
 }
-.checkout-payment__field {
+.checkout__progress-link {
+  flex: 0 0 65px;
+  height: 1px;
+  background-color: #8DA291;
+}
+.checkout__progress-core {
+  width: 14px;
+  height: 14px;
+  border-radius: 50%;
+  background-color: #EAF0ED;
+}
+.checkout__field {
   display: flex;
   flex-direction: column;
   flex: 1;
   gap: 8px;
 }
-.checkout-payment__field--last {
+.checkout__field--address {
+  flex: 1 1 100%;
+}
+.checkout__field--last {
   width: 50%;
   padding-right: 4px;
 }
-.checkout-payment__label {
+.checkout__address-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+.checkout__label {
   color: #EAF0ED;
   font: normal normal 600 20px/20px "PingFang TC", "Noto Sans TC", "Microsoft JhengHei", sans-serif;
 }
-.checkout-payment__input {
+.checkout__input {
   width: 100%;
   padding: 17px 20px;
   background-color: #EAF0ED;
@@ -1865,27 +1726,20 @@ header a {
   font: normal normal 300 16px/20px "PingFang TC", "Noto Sans TC", "Microsoft JhengHei", sans-serif;
   border: #EAF0ED 3px solid;
 }
-.checkout-payment__input::placeholder {
+.checkout__input::placeholder {
   color: #8DA291;
-  font: normal normal 300 16px/20px "PingFang TC", "Noto Sans TC", "Microsoft JhengHei", sans-serif;
 }
-.checkout-payment__input:focus {
+.checkout__input:focus {
   outline: none;
   border-color: #FFE180;
 }
-.checkout-payment__name-group {
+.checkout__select-group {
   display: flex;
   justify-content: center;
   align-items: center;
   gap: 8px;
 }
-.checkout-payment__select-group {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  gap: 8px;
-}
-.checkout-payment__select {
+.checkout__select {
   width: 100%;
   padding: 17px 20px;
   background-color: #EAF0ED;
@@ -1893,7 +1747,13 @@ header a {
   font: normal normal 300 16px/20px "PingFang TC", "Noto Sans TC", "Microsoft JhengHei", sans-serif;
   border: #EAF0ED 3px solid;
 }
-.checkout-payment__button {
+.checkout__name-group {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 8px;
+}
+.checkout__button {
   display: flex;
   justify-content: center;
   align-items: center;
@@ -1904,15 +1764,15 @@ header a {
   cursor: pointer;
   transition: transform 0.3s ease, background-color 0.3s ease;
 }
-.checkout-payment__button:hover {
+.checkout__button:hover {
   transform: scale(1.03);
 }
-.checkout-payment__button p {
+.checkout__button p {
   font: normal normal 600 24px/24px "PingFang TC", "Noto Sans TC", "Microsoft JhengHei", sans-serif;
   color: #3F5D45;
   margin: 0;
 }
-.checkout-payment__side {
+.checkout__side {
   display: flex;
   justify-content: space-between;
   align-items: center;
@@ -1921,153 +1781,33 @@ header a {
   flex: 300;
 }
 @media (max-width: 568px) {
-  .checkout-payment__side {
+  .checkout__side {
     display: none;
   }
 }
 
-/* ===== 訂單摘要區 ===== */
-.checkout-summary {
-  width: 100%;
-  border: 1px solid #EAF0ED;
-}
-.checkout-summary__title {
-  font: normal normal 600 24px/65px "PingFang TC", "Noto Sans TC", "Microsoft JhengHei", sans-serif;
-  color: #8DA291;
-  background-color: #EAF0ED;
-  text-align: center;
-}
-.checkout-summary__list {
+/* checkout1：收件資訊 */
+.checkout__name-group {
   display: flex;
   justify-content: center;
   align-items: center;
-  flex-direction: column;
-  padding: 16px 20px;
   gap: 8px;
 }
-.checkout-summary__item {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  font: normal normal 300 16px/20px "PingFang TC", "Noto Sans TC", "Microsoft JhengHei", sans-serif;
-  color: #8DA291;
-  width: 100%;
-}
-.checkout-summary__item--total {
-  margin-top: 8px;
-  font: normal normal 600 20px/20px "PingFang TC", "Noto Sans TC", "Microsoft JhengHei", sans-serif;
+
+/* checkout2：付款資訊 */
+.checkout__field--last {
+  width: 50%;
+  padding-right: 4px;
 }
 
-/* ===== 購物清單區 ===== */
-.checkout-cart {
-  width: 100%;
-  border: 1px solid #EAF0ED;
-}
-.checkout-cart__title {
-  font: normal normal 600 24px/65px "PingFang TC", "Noto Sans TC", "Microsoft JhengHei", sans-serif;
-  color: #8DA291;
-  background-color: #EAF0ED;
-  text-align: center;
-}
-.checkout-cart__list {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  flex-direction: column;
-  padding: 16px 20px;
-  gap: 16px;
-}
-.checkout-cart__item {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  width: 100%;
-}
-.checkout-cart__image-wrapper {
-  width: 120px;
-  height: 80px;
-  overflow: hidden;
-}
-.checkout-cart__image {
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
-  display: block;
-}
-.checkout-cart__details {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  align-items: flex-start;
-  flex-direction: column;
-  gap: 2px;
-}
-.checkout-cart__name {
-  font: normal normal 300 16px/20px "PingFang TC", "Noto Sans TC", "Microsoft JhengHei", sans-serif;
-  color: #8DA291;
-}
-.checkout-cart__price {
-  font: normal normal 600 20px/20px "PingFang TC", "Noto Sans TC", "Microsoft JhengHei", sans-serif;
-  color: #8DA291;
-}
-
-/* checkout3.scss */
-.checkout-invoice {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  align-items: flex-start;
-  max-width: 780px;
-  margin: 0 auto;
-  gap: 20px;
-  margin-bottom: 65px;
-  /* 表單區 */
-  /* 發票類型按鈕群組 */
-  /* 單一欄位 */
-  /* 持卡人姓名或同列輸入群組 */
-  /* 地址下拉選單 */
-  /* 下一步按鈕 */
-  /* 右側資訊欄位 */
-}
-@media (max-width: 568px) {
-  .checkout-invoice {
-    width: 100%;
-    margin-bottom: 0;
-  }
-}
-.checkout-invoice__form {
-  margin: 0;
-  background-color: #3F5D45;
-  flex: 460;
-}
-.checkout-invoice__fieldset {
-  border: none;
-  display: flex;
-  flex-direction: column;
-  margin: 30px;
-  gap: 16px;
-}
-.checkout-invoice__header {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-}
-.checkout-invoice__title {
-  font: normal normal 600 36px/36px "PingFang TC", "Noto Sans TC", "Microsoft JhengHei", sans-serif;
-  color: #EAF0ED;
-  margin-bottom: 14px;
-}
-.checkout-invoice__progress {
-  height: 8px;
-  background-color: #EAF0ED;
-}
-.checkout-invoice__type-group {
+/* checkout3：發票資訊 */
+.checkout__type-group {
   display: flex;
   justify-content: center;
   align-items: center;
   margin-bottom: 14px;
 }
-.checkout-invoice__type-btn {
+.checkout__type-btn {
   display: flex;
   justify-content: center;
   align-items: center;
@@ -2078,120 +1818,35 @@ header a {
   cursor: pointer;
   transition: transform 0.3s ease, background-color 0.3s ease;
 }
-.checkout-invoice__type-btn p {
+.checkout__type-btn p {
   font: normal normal 600 20px/20px "PingFang TC", "Noto Sans TC", "Microsoft JhengHei", sans-serif;
   color: #EAF0ED;
   margin: 0;
 }
-.checkout-invoice__type-btn--active {
+.checkout__type-btn--active {
   background-color: #EAF0ED;
 }
-.checkout-invoice__type-btn--active p {
+.checkout__type-btn--active p {
   color: #3F5D45;
 }
-.checkout-invoice__type-btn:hover {
+.checkout__type-btn:hover {
   transform: scale(1.03);
 }
-.checkout-invoice__field {
-  display: flex;
-  flex-direction: column;
-  gap: 8px;
-}
-.checkout-invoice__field--address {
-  flex: 1 1 100%;
-}
-.checkout-invoice__label {
-  color: #EAF0ED;
-  font: normal normal 600 20px/20px "PingFang TC", "Noto Sans TC", "Microsoft JhengHei", sans-serif;
-}
-.checkout-invoice__input {
-  width: 100%;
-  padding: 17px 20px;
-  background-color: #EAF0ED;
-  color: #3F5D45;
-  font: normal normal 300 16px/20px "PingFang TC", "Noto Sans TC", "Microsoft JhengHei", sans-serif;
-  border: #EAF0ED 3px solid;
-}
-.checkout-invoice__input::placeholder {
-  color: #8DA291;
-  font: normal normal 300 16px/20px "PingFang TC", "Noto Sans TC", "Microsoft JhengHei", sans-serif;
-}
-.checkout-invoice__input:focus {
-  outline: none;
-  border-color: #FFE180;
-}
-.checkout-invoice__address-header {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-}
-.checkout-invoice__checkbox-wrap {
+.checkout__checkbox-wrap {
   display: flex;
   align-items: center;
   gap: 8px;
 }
-.checkout-invoice__checkbox {
+.checkout__checkbox {
   width: 16px;
   height: 16px;
 }
-.checkout-invoice__checkbox-label {
+.checkout__checkbox-label {
   font: normal normal 600 16px/16px "PingFang TC", "Noto Sans TC", "Microsoft JhengHei", sans-serif;
   color: #EAF0ED;
 }
-.checkout-invoice__name-group {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  gap: 8px;
-}
-.checkout-invoice__select-group {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  gap: 8px;
-}
-.checkout-invoice__select {
-  width: 100%;
-  padding: 17px 20px;
-  background-color: #EAF0ED;
-  color: #3F5D45;
-  font: normal normal 300 16px/20px "PingFang TC", "Noto Sans TC", "Microsoft JhengHei", sans-serif;
-  border: #EAF0ED 3px solid;
-}
-.checkout-invoice__button {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  width: 100%;
-  height: 65px;
-  background-color: #FFE180;
-  border: none;
-  cursor: pointer;
-  transition: transform 0.3s ease, background-color 0.3s ease;
-}
-.checkout-invoice__button:hover {
-  transform: scale(1.03);
-}
-.checkout-invoice__button p {
-  font: normal normal 600 24px/24px "PingFang TC", "Noto Sans TC", "Microsoft JhengHei", sans-serif;
-  color: #3F5D45;
-  margin: 0;
-}
-.checkout-invoice__side {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  flex-direction: column;
-  gap: 20px;
-  flex: 300;
-}
-@media (max-width: 568px) {
-  .checkout-invoice__side {
-    display: none;
-  }
-}
 
-/* 訂單摘要區（共用 checkout-summary.scss，可直接引用） */
+/* 共用：訂單摘要區 */
 .checkout-summary {
   width: 100%;
   border: 1px solid #EAF0ED;
@@ -2214,16 +1869,16 @@ header a {
   display: flex;
   justify-content: space-between;
   align-items: center;
+  width: 100%;
   font: normal normal 300 16px/20px "PingFang TC", "Noto Sans TC", "Microsoft JhengHei", sans-serif;
   color: #8DA291;
-  width: 100%;
 }
 .checkout-summary__item--total {
   margin-top: 8px;
   font: normal normal 600 20px/20px "PingFang TC", "Noto Sans TC", "Microsoft JhengHei", sans-serif;
 }
 
-/* 購物清單區（共用 checkout-cart.scss，可直接引用） */
+/* 共用：購物清單區 */
 .checkout-cart {
   width: 100%;
   border: 1px solid #EAF0ED;
@@ -2277,10 +1932,7 @@ header a {
 }
 
 /* checkout3.scss */
-/* ================================
-   結帳成功頁樣式
-   檔案：checkout-success.scss
-   ================================ */
+/* 結帳成功頁樣式 */
 .checkout-success {
   display: flex;
   justify-content: center;
@@ -2289,7 +1941,7 @@ header a {
   margin-bottom: 60px;
   /* 主視覺圖片 */
   /* 覆蓋在主視覺上的內容 */
-  /* 進度條區（暫放） */
+  /* 進度條區 */
   /* 成功圖示 */
   /* 按鈕樣式 */
 }
@@ -2327,9 +1979,31 @@ header a {
   text-align: center;
 }
 .checkout-success__progress {
+  display: flex;
+  justify-content: center;
+  align-items: center;
   margin-bottom: 32px;
-  color: #3F5D45;
-  font-size: 14px;
+}
+.checkout-success__progress-circle {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 20px;
+  height: 20px;
+  border-radius: 50%;
+  background-color: #3F5D45;
+  transition: background-color 0.3s ease;
+}
+.checkout-success__progress-link {
+  flex: 0 0 65px;
+  height: 1px;
+  background-color: #3F5D45;
+}
+.checkout-success__progress-core {
+  width: 14px;
+  height: 14px;
+  border-radius: 50%;
+  background-color: #EAF0ED;
 }
 .checkout-success__icon {
   margin-bottom: 50px;

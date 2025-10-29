@@ -173,21 +173,50 @@ export default function products() {
                     </div>
                 </div>
             </div>
+
+            <div class="product-card__turn-page">
+                <button class="turn-page__btn turn-page__btn--prev">
+                    <img src="./img/ic-arrow_left.png" alt="上一頁">
+                </button>
+                <button class="turn-page__btn">
+                    <p class="turn-page__number turn-page__number--active">1</p>
+                </button>
+                <button class="turn-page__btn">
+                    <p class="turn-page__number">2</p>
+                </button>
+                <button class="turn-page__btn">
+                    <p class="turn-page__number">3</p>
+                </button>
+                <button class="turn-page__btn turn-page__btn--next">
+                    <img src="./img/ic-arrow_right.png" alt="下一頁">
+                </button>
+            </div>
         </div>
     </section>
     `;
 
-    const categoryBtn = el.querySelectorAll(".product-list__category-btn");
-    categoryBtn.forEach(btn => {
-        btn.addEventListener("click", () => {
+    // 商品分類按鈕
+    const categoryButtons = el.querySelectorAll(".product-list__category-btn");
+    categoryButtons.forEach(button => {
+        button.addEventListener("click", () => {
             location.hash = "";
             location.hash = "products";
         });
     });
 
-    const addToCart = el.querySelectorAll(".product-card__btn");
-    addToCart.forEach(btn => {
-        btn.addEventListener("click", () => {
+    // 分頁頁碼按鈕
+    const pageNumberButtons = el.querySelectorAll(".turn-page__number");
+    pageNumberButtons.forEach(button => {
+        button.addEventListener("click", () => {
+            pageNumberButtons.forEach(b => b.classList.remove("turn-page__number--active"));
+            button.classList.add("turn-page__number--active");
+        });
+    });
+
+    // 加入購物車按鈕
+    const addToCartButtons = el.querySelectorAll(".product-card__btn");
+    addToCartButtons.forEach(button => {
+        button.addEventListener("click", () => {
             location.hash = "cart";
         });
     });

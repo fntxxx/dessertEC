@@ -1,51 +1,63 @@
 export default function checkout3_1() {
-  const el = document.createElement("section");
-  el.innerHTML = `
-    <section class="checkout-invoice">
+    const el = document.createElement("section");
+    el.innerHTML = `
+    <section class="checkout">
 
         <!-- 左側表單區 -->
-        <form class="checkout-invoice__form">
-            <fieldset class="checkout-invoice__fieldset">
+        <form class="checkout__form">
+            <fieldset class="checkout__fieldset">
 
                 <!-- 標題與進度條 -->
-                <div class="checkout-invoice__header">
-                    <h2 class="checkout-invoice__title">發票</h2>
-                    <div class="checkout-invoice__progress">進度條（暫放）</div>
+                <div class="checkout__header">
+                    <h2 class="checkout__title">發票</h2>
+                    <div class="checkout__progress">
+                        <div class="checkout__progress-circle checkout__progress-circle--done">
+                            <img src="./img/ic-check.png" alt="步驟完成圖示">
+                        </div>
+                        <div class="checkout__progress-link"></div>
+                        <div class="checkout__progress-circle checkout__progress-circle--done">
+                            <img src="./img/ic-check.png" alt="步驟完成圖示">
+                        </div>
+                        <div class="checkout__progress-link"></div>
+                        <div class="checkout__progress-circle checkout__progress-circle--active">
+                            <div class="checkout__progress-core"></div>
+                        </div>
+                    </div>
                 </div>
 
                 <!-- 發票種類選擇 -->
-                <div class="checkout-invoice__type-group">
-                    <button type="button" class="checkout-invoice__type-btn checkout-invoice__type-btn--active" data-page="checkout3_1">
+                <div class="checkout__type-group">
+                    <button type="button" class="checkout__type-btn checkout__type-btn--active" data-page="checkout3_1">
                         <p>電子發票</p>
                     </button>
-                    <button type="button" class="checkout-invoice__type-btn" data-page="checkout3_2">
+                    <button type="button" class="checkout__type-btn" data-page="checkout3_2">
                         <p>郵寄發票</p>
                     </button>
                 </div>
 
                 <!-- 電子郵件 -->
-                <div class="checkout-invoice__field">
-                    <label for="invoice-email" class="checkout-invoice__label">電子郵件信箱</label>
+                <div class="checkout__field">
+                    <label for="invoice-email" class="checkout__label">電子郵件信箱</label>
                     <input type="text" id="invoice-email" placeholder="example@email.com"
-                        class="checkout-invoice__input">
+                        class="checkout__input">
                 </div>
 
                 <!-- 統一編號 -->
-                <div class="checkout-invoice__field">
-                    <label for="invoice-tax-id" class="checkout-invoice__label">統一編號（選填）</label>
-                    <input type="text" id="invoice-tax-id" placeholder="12345678" class="checkout-invoice__input">
+                <div class="checkout__field">
+                    <label for="invoice-tax-id" class="checkout__label">統一編號（選填）</label>
+                    <input type="text" id="invoice-tax-id" placeholder="12345678" class="checkout__input">
                 </div>
 
             </fieldset>
 
             <!-- 確認結帳按鈕 -->
-            <button type="button" class="checkout-invoice__button">
+            <button type="button" class="checkout__button">
                 <p>確認結帳</p>
             </button>
         </form>
 
         <!-- 右側區塊 -->
-        <div class="checkout-invoice__side">
+        <div class="checkout__side">
 
             <!-- 訂單摘要 -->
             <aside class="checkout-summary">
@@ -105,19 +117,19 @@ export default function checkout3_1() {
     </section>
   `;
 
-  const typeButtons = el.querySelectorAll(".checkout-invoice__type-btn");
-  typeButtons.forEach((btn) => {
-    btn.addEventListener("click", () => {
-      typeButtons.forEach((b) => b.classList.remove("checkout-invoice__type-btn--active"));
-      btn.classList.add("checkout-invoice__type-btn--active");
-      location.hash = btn.dataset.page;
+    const typeButtons = el.querySelectorAll(".checkout__type-btn");
+    typeButtons.forEach((btn) => {
+        btn.addEventListener("click", () => {
+            typeButtons.forEach((b) => b.classList.remove("checkout__type-btn--active"));
+            btn.classList.add("checkout__type-btn--active");
+            location.hash = btn.dataset.page;
+        });
     });
-  });
 
 
-  const checkoutBtn = el.querySelector(".checkout-invoice__button");
-  checkoutBtn.addEventListener("click", () => {
-    location.hash = "checkout_success";
-  })
-  return el;
+    const checkoutBtn = el.querySelector(".checkout__button");
+    checkoutBtn.addEventListener("click", () => {
+        location.hash = "checkout_success";
+    })
+    return el;
 }

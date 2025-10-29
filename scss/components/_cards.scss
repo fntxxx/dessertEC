@@ -10,7 +10,8 @@
 
     &__list {
         @include flex-center;
-        gap: 10px;
+        gap: 20px;
+        width: 100%;
         flex-wrap: wrap;
         margin: 0 auto;
 

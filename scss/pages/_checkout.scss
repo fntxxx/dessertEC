@@ -1,16 +1,15 @@
-/* checkout1.scss */
+/* _checkout.scss */
 
 @use "../base" as *;
 @use "../components" as *;
 
-
-.checkout-shipping {
+/* 共用結帳主體 */
+.checkout {
     @include flex-center;
     align-items: flex-start;
     max-width: 780px;
-    margin: 0 auto;
+    margin: 0 auto 65px;
     gap: 20px;
-    margin-bottom: 65px;
 
     @include mobile {
         width: 100%;
@@ -43,16 +42,41 @@
     }
 
     &__progress {
-        height: 8px;
-        background-color: $color-secondary-light;
-    }
-
-    /* 姓名區塊 */
-    &__name-group {
         @include flex-center;
-        gap: 8px;
+
+        &-circle {
+            width: 20px;
+            height: 20px;
+            border-radius: 50%;
+            border: 1px solid $color-secondary;
+            background-color: transparent;
+            transition: background-color 0.3s ease;
+
+            &--active {
+                border-color: $color-secondary-light;
+                @include flex-center;
+            }
+
+            &--done {
+                background-color: $color-secondary-light;
+            }
+        }
+
+        &-link {
+            flex: 0 0 65px;
+            height: 1px;
+            background-color: $color-secondary;
+        }
+
+        &-core {
+            width: 14px;
+            height: 14px;
+            border-radius: 50%;
+            background-color: $color-secondary-light;
+        }
     }
 
+    /* 輸入欄位共用設定 */
     &__field {
         display: flex;
         flex-direction: column;
@@ -62,6 +86,15 @@
         &--address {
             flex: 1 1 100%;
         }
+
+        &--last {
+            width: 50%;
+            padding-right: 4px;
+        }
+    }
+
+    &__address-header {
+        @include flex-between;
     }
 
     &__label {
@@ -79,7 +112,6 @@
 
         &::placeholder {
             color: $color-secondary;
-            font: normal normal 300 16px/20px $font-primary;
         }
 
         &:focus {
@@ -88,7 +120,7 @@
         }
     }
 
-    /* 地址下拉選單 */
+    /* 選單群組 */
     &__select-group {
         @include flex-center;
         gap: 8px;
@@ -101,6 +133,12 @@
         color: $color-primary;
         font: normal normal 300 16px/20px $font-primary;
         border: $color-secondary-light 3px solid;
+    }
+
+    /* 同行輸入群組（姓名、信用卡等） */
+    &__name-group {
+        @include flex-center;
+        gap: 8px;
     }
 
     /* 下一步按鈕 */
@@ -124,7 +162,7 @@
         }
     }
 
-    /* 右側資訊欄位 */
+    /* 右側資訊欄 */
     &__side {
         @include flex-between;
         flex-direction: column;
@@ -137,7 +175,75 @@
     }
 }
 
-/* 訂單摘要區 */
+/* checkout1：收件資訊 */
+.checkout {
+    &__name-group {
+        @include flex-center;
+        gap: 8px;
+    }
+}
+
+/* checkout2：付款資訊 */
+.checkout {
+    &__field--last {
+        width: 50%;
+        padding-right: 4px;
+    }
+}
+
+/* checkout3：發票資訊 */
+.checkout {
+    &__type-group {
+        @include flex-center;
+        margin-bottom: 14px;
+    }
+
+    &__type-btn {
+        @include flex-center;
+        flex: 1;
+        height: 56px;
+        background-color: $color-primary;
+        border: 1px solid $color-secondary-light;
+        cursor: pointer;
+        transition: transform 0.3s ease, background-color 0.3s ease;
+
+        p {
+            font: normal normal 600 20px/20px $font-primary;
+            color: $color-secondary-light;
+            margin: 0;
+        }
+
+        &--active {
+            background-color: $color-secondary-light;
+
+            p {
+                color: $color-primary;
+            }
+        }
+
+        &:hover {
+            transform: scale(1.03);
+        }
+    }
+
+    &__checkbox-wrap {
+        display: flex;
+        align-items: center;
+        gap: 8px;
+    }
+
+    &__checkbox {
+        width: 16px;
+        height: 16px;
+    }
+
+    &__checkbox-label {
+        font: normal normal 600 16px/16px $font-primary;
+        color: $color-secondary-light;
+    }
+}
+
+/* 共用：訂單摘要區 */
 .checkout-summary {
     width: 100%;
     border: 1px solid $color-secondary-light;
@@ -158,9 +264,9 @@
 
     &__item {
         @include flex-between;
+        width: 100%;
         font: normal normal 300 16px/20px $font-primary;
         color: $color-secondary;
-        width: 100%;
 
         &--total {
             margin-top: 8px;
@@ -169,7 +275,7 @@
     }
 }
 
-/* 購物清單區 */
+/* 共用：購物清單區 */
 .checkout-cart {
     width: 100%;
     border: 1px solid $color-secondary-light;

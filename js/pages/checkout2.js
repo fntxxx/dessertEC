@@ -1,37 +1,46 @@
 export default function checkout2() {
-  const el = document.createElement("section");
-  el.innerHTML = `
-    <section class="checkout-payment">
+    const el = document.createElement("section");
+    el.innerHTML = `
+    <section class="checkout">
 
         <!-- 左側表單區 -->
-        <form class="checkout-payment__form">
-            <fieldset class="checkout-payment__fieldset">
-                <div class="checkout-payment__header">
-                    <h2 class="checkout-payment__title">付款</h2>
-                    <div class="checkout-payment__progress">進度條（暫放）</div>
+        <form class="checkout__form">
+            <fieldset class="checkout__fieldset">
+                <div class="checkout__header">
+                    <h2 class="checkout__title">付款</h2>
+                    <div class="checkout__progress">
+                        <div class="checkout__progress-circle checkout__progress-circle--done">
+                            <img src="./img/ic-check.png" alt="步驟完成圖示">
+                        </div>
+                        <div class="checkout__progress-link"></div>
+                        <div class="checkout__progress-circle checkout__progress-circle--active">
+                            <div class="checkout__progress-core"></div>
+                        </div>
+                        <div class="checkout__progress-link"></div>
+                        <div class="checkout__progress-circle"></div>
+                    </div>
                 </div>
 
                 <!-- 信用卡卡號 -->
-                <div class="checkout-payment__field">
-                    <label for="card-number" class="checkout-payment__label">信用卡卡號</label>
-                    <input type="text" id="card-number" placeholder="9012-3456-7890-1234"
-                        class="checkout-payment__input">
+                <div class="checkout__field">
+                    <label for="card-number" class="checkout__label">信用卡卡號</label>
+                    <input type="text" id="card-number" placeholder="9012-3456-7890-1234" class="checkout__input">
                 </div>
 
                 <!-- 持卡人姓名 -->
-                <div class="checkout-payment__field">
-                    <label class="checkout-payment__label">持卡人姓名</label>
-                    <div class="checkout-payment__name-group">
-                        <input type="text" id="card-last-name" placeholder="王" class="checkout-payment__input">
-                        <input type="text" id="card-first-name" placeholder="小明" class="checkout-payment__input">
+                <div class="checkout__field">
+                    <label class="checkout__label">持卡人姓名</label>
+                    <div class="checkout__name-group">
+                        <input type="text" id="card-last-name" placeholder="王" class="checkout__input">
+                        <input type="text" id="card-first-name" placeholder="小明" class="checkout__input">
                     </div>
                 </div>
 
                 <!-- 有效期限 -->
-                <div class="checkout-payment__field checkout-payment__field--expiry">
-                    <label for="expiry-month" class="checkout-payment__label">有效期限</label>
-                    <div class="checkout-payment__select-group">
-                        <select name="expiry-month" id="expiry-month" class="checkout-payment__select">
+                <div class="checkout__field checkout__field--expiry">
+                    <label for="expiry-month" class="checkout__label">有效期限</label>
+                    <div class="checkout__select-group">
+                        <select name="expiry-month" id="expiry-month" class="checkout__select">
                             <option>月</option>
                             <option value="1">1</option>
                             <option value="2">2</option>
@@ -47,7 +56,7 @@ export default function checkout2() {
                             <option value="12">12</option>
                         </select>
 
-                        <select name="expiry-year" id="expiry-year" class="checkout-payment__select">
+                        <select name="expiry-year" id="expiry-year" class="checkout__select">
                             <option>年</option>
                             <option value="2025">2025</option>
                             <option value="2026">2026</option>
@@ -65,20 +74,20 @@ export default function checkout2() {
                 </div>
 
                 <!-- 背面末三碼 -->
-                <div class="checkout-payment__field checkout-payment__field--last">
-                    <label for="cvc" class="checkout-payment__label">背面末三碼</label>
-                    <input type="text" id="cvc" placeholder="123" class="checkout-payment__input">
+                <div class="checkout__field checkout__field--last">
+                    <label for="cvc" class="checkout__label">背面末三碼</label>
+                    <input type="text" id="cvc" placeholder="123" class="checkout__input">
                 </div>
             </fieldset>
 
             <!-- 下一步按鈕 -->
-            <button type="button" class="checkout-payment__button">
+            <button type="button" class="checkout__button">
                 <p>下一步</p>
             </button>
         </form>
 
         <!-- 右側區塊 -->
-        <div class="checkout-payment__side">
+        <div class="checkout__side">
             <!-- 訂單摘要 -->
             <aside class="checkout-summary">
                 <h3 class="checkout-summary__title">訂單摘要</h3>
@@ -137,10 +146,10 @@ export default function checkout2() {
     </section>
   `;
 
-  const checkoutBtn = el.querySelector(".checkout-payment__button");
-  checkoutBtn.addEventListener("click", () => {
-    location.hash = "checkout3_1";
-  })
+    const checkoutBtn = el.querySelector(".checkout__button");
+    checkoutBtn.addEventListener("click", () => {
+        location.hash = "checkout3_1";
+    })
 
-  return el;
+    return el;
 }

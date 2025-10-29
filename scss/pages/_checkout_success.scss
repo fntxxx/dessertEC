@@ -3,10 +3,7 @@
 @use "../base" as *;
 @use "../components" as *;
 
-/* ================================
-   結帳成功頁樣式
-   檔案：checkout-success.scss
-   ================================ */
+/* 結帳成功頁樣式 */
 
 .checkout-success {
     display: flex;
@@ -53,11 +50,32 @@
         text-align: center;
     }
 
-    /* 進度條區（暫放） */
+    /* 進度條區 */
     &__progress {
+        @include flex-center;
         margin-bottom: 32px;
-        color: $color-primary;
-        font-size: 14px;
+
+        &-circle {
+            @include flex-center;
+            width: 20px;
+            height: 20px;
+            border-radius: 50%;
+            background-color: $color-primary;
+            transition: background-color 0.3s ease;
+        }
+
+        &-link {
+            flex: 0 0 65px;
+            height: 1px;
+            background-color: $color-primary;
+        }
+
+        &-core {
+            width: 14px;
+            height: 14px;
+            border-radius: 50%;
+            background-color: $color-secondary-light;
+        }
     }
 
     /* 成功圖示 */

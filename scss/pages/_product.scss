@@ -54,7 +54,8 @@
 .product-list {
     @include flex-between;
     align-items: flex-start;
-    gap: 10px;
+    gap: 20px;
+    margin-bottom: 60px;
 
     @include mobile {
         flex-direction: column;
@@ -63,11 +64,15 @@
     }
 }
 
+.product-list__categories {
+    flex: 300;
+}
+
 .product-list__category-table {
-    width: 300px;
     border-collapse: collapse;
     table-layout: fixed;
     text-align: center;
+    width: 100%;
 
     @include mobile {
         width: 100%;
@@ -75,7 +80,7 @@
 
     th,
     td {
-        width: 300px;
+        width: 100%;
         height: 65px;
         padding: 0;
     }
@@ -115,5 +120,36 @@
 
 
 .product-card {
+    flex: 620;
     @include product-card($width: 300px);
+
+    &__turn-page {
+        @include flex-center;
+        justify-content: flex-end;
+        margin-top: 30px;
+    }
+}
+
+.turn-page {
+    &__btn {
+        background-color: transparent;
+        border: 1px solid $color-secondary-light;
+        width: 60px;
+        height: 60px;
+
+        &:hover {
+            background-color: $color-secondary-light;
+        }
+    }
+
+    &__number {
+        color: $color-primary;
+        font: normal normal 300 20px/58px $font-primary;
+        text-align: center;
+
+        &--active {
+            color: $color-secondary-light;
+            background-color: $color-primary;
+        }
+    }
 }
