@@ -57,6 +57,7 @@ export default function products() {
 
     // 英文 badge 對應中文顯示
     const badgeMap = {
+        all: "所有甜點",
         daily: "本日精選",
         popular: "人氣推薦",
         new: "新品上市"
@@ -69,18 +70,22 @@ export default function products() {
         return match ? match[1] : "all";
     }
 
+    // 切換 active 按鈕
     function setActiveCategoryButton(badge) {
         categoryButtons.forEach(btn => btn.classList.remove("product-list__category-btn--active"));
         const activeBtn = Array.from(categoryButtons).find(btn => btn.dataset.badge === badge);
         if (activeBtn) activeBtn.classList.add("product-list__category-btn--active");
     }
 
+    // 篩選資料
     function filterDataByBadge(badge) {
+        setActiveCategoryButton(badge);
         currentData = badge === "all" ? productsData : productsData.filter(p => p.badge === badge);
         currentPage = 0;
         renderProducts(currentPage);
     }
 
+    // 渲染商品
     function renderProducts(page = 0) {
         productList.innerHTML = "";
         const start = page * ITEMS_PER_PAGE;
@@ -117,6 +122,7 @@ export default function products() {
         renderPagination();
     }
 
+    // 渲染分頁
     function renderPagination() {
         paginationEl.innerHTML = "";
         const totalPages = Math.ceil(currentData.length / ITEMS_PER_PAGE);
@@ -134,7 +140,7 @@ export default function products() {
         });
         paginationEl.appendChild(prevBtn);
 
-        // 頁碼按鈕
+        // 頁碼
         const maxVisible = 3;
         let startPage = Math.max(0, currentPage - 1);
         let endPage = Math.min(totalPages - 1, startPage + maxVisible - 1);
@@ -189,17 +195,17 @@ export default function products() {
         paginationEl.appendChild(nextBtn);
     }
 
-    // 類別按鈕事件 + hash 篩選
+    // 點按 category 按鈕 → 篩選並更新 hash
     categoryButtons.forEach(btn => {
         btn.addEventListener("click", () => {
             const badge = btn.dataset.badge;
-            location.hash = `products?category=${badge}`;
+            filterDataByBadge(badge);
+            history.replaceState(null, "", `#products?category=${badge}`);
         });
     });
 
     // 初始分類
     const initialCategory = getInitialCategory();
-    setActiveCategoryButton(initialCategory);
     filterDataByBadge(initialCategory);
 
     return el;
