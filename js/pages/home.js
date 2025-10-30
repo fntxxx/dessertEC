@@ -7,15 +7,15 @@ export default function home() {
         </div>
 
         <div class="hero__category-buttons">
-            <button type="button" class="hero__button hero__button--daily">
+            <button type="button" class="hero__button hero__button--daily" data-category="daily">
                 <p>本日精選</p>
             </button>
 
-            <button type="button" class="hero__button hero__button--popular">
+            <button type="button" class="hero__button hero__button--popular" data-category="popular">
                 <p>人氣推薦</p>
             </button>
 
-            <button type="button" class="hero__button hero__button--new">
+            <button type="button" class="hero__button hero__button--new" data-category="new">
                 <p>新品上市</p>
             </button>
         </div>
@@ -142,7 +142,8 @@ export default function home() {
     const heroBtn = el.querySelectorAll(".hero__button");
     heroBtn.forEach(btn => {
         btn.addEventListener("click", () => {
-            location.hash = "products";
+            const category = btn.dataset.category; // 取得對應類別
+            location.hash = `products?category=${category}`; // 帶上參數
         });
     });
 

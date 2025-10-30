@@ -25,16 +25,16 @@ export default function products() {
                 </thead>
                 <tbody>
                     <tr>
-                        <td><button type="button" class="product-list__category-btn product-list__category-btn--active" data-badge="all"><p>所有甜點（48）</p></button></td>
+                        <td><button type="button" class="product-list__category-btn" data-badge="all"><p>所有甜點（48）</p></button></td>
                     </tr>
                     <tr>
-                        <td><button type="button" class="product-list__category-btn" data-badge="本日精選"><p>本日精選（10）</p></button></td>
+                        <td><button type="button" class="product-list__category-btn" data-badge="daily"><p>本日精選（10）</p></button></td>
                     </tr>
                     <tr>
-                        <td><button type="button" class="product-list__category-btn" data-badge="人氣推薦"><p>人氣推薦（26）</p></button></td>
+                        <td><button type="button" class="product-list__category-btn" data-badge="popular"><p>人氣推薦（26）</p></button></td>
                     </tr>
                     <tr>
-                        <td><button type="button" class="product-list__category-btn" data-badge="新品上市"><p>新品上市（12）</p></button></td>
+                        <td><button type="button" class="product-list__category-btn" data-badge="new"><p>新品上市（12）</p></button></td>
                     </tr>
                 </tbody>
             </table>
@@ -49,10 +49,37 @@ export default function products() {
 
     const productList = el.querySelector(".product-card__list");
     const paginationEl = el.querySelector(".product-card__turn-page");
+    const categoryButtons = el.querySelectorAll(".product-list__category-btn");
 
     const ITEMS_PER_PAGE = 6;
     let currentPage = 0;
     let currentData = productsData;
+
+    // 英文 badge 對應中文顯示
+    const badgeMap = {
+        daily: "本日精選",
+        popular: "人氣推薦",
+        new: "新品上市"
+    };
+
+    // 讀取 URL hash 參數，設定初始分類
+    function getInitialCategory() {
+        const hash = location.hash;
+        const match = hash.match(/category=(\w+)/);
+        return match ? match[1] : "all";
+    }
+
+    function setActiveCategoryButton(badge) {
+        categoryButtons.forEach(btn => btn.classList.remove("product-list__category-btn--active"));
+        const activeBtn = Array.from(categoryButtons).find(btn => btn.dataset.badge === badge);
+        if (activeBtn) activeBtn.classList.add("product-list__category-btn--active");
+    }
+
+    function filterDataByBadge(badge) {
+        currentData = badge === "all" ? productsData : productsData.filter(p => p.badge === badge);
+        currentPage = 0;
+        renderProducts(currentPage);
+    }
 
     function renderProducts(page = 0) {
         productList.innerHTML = "";
@@ -66,7 +93,7 @@ export default function products() {
             productEl.innerHTML = `
                 <div class="product-card__image">
                     <img src="${item.image}" alt="${item.name}">
-                    <div class="product-card__badge">${item.badge}</div>
+                    <div class="product-card__badge">${badgeMap[item.badge]}</div>
                     <button class="product-card__fav">
                         <img src="./img/ic-favorite.png" alt="加入收藏">
                     </button>
@@ -82,11 +109,9 @@ export default function products() {
             productList.appendChild(productEl);
         });
 
-        const addToCartButtons = el.querySelectorAll(".product-card__btn");
-        addToCartButtons.forEach(button => {
-            button.addEventListener("click", () => {
-                location.hash = "cart";
-            });
+        // 事件委派：加入購物車
+        productList.querySelectorAll(".product-card__btn").forEach(btn => {
+            btn.addEventListener("click", () => location.hash = "cart");
         });
 
         renderPagination();
@@ -96,7 +121,7 @@ export default function products() {
         paginationEl.innerHTML = "";
         const totalPages = Math.ceil(currentData.length / ITEMS_PER_PAGE);
 
-        // 上一頁按鈕
+        // 上一頁
         const prevBtn = document.createElement("button");
         prevBtn.className = "turn-page__btn turn-page__btn--prev";
         prevBtn.innerHTML = `<img src="./img/ic-arrow_left.png" alt="上一頁">`;
@@ -109,13 +134,12 @@ export default function products() {
         });
         paginationEl.appendChild(prevBtn);
 
-        // 計算頁碼範圍（最多顯示3個頁碼）
+        // 頁碼按鈕
         const maxVisible = 3;
         let startPage = Math.max(0, currentPage - 1);
         let endPage = Math.min(totalPages - 1, startPage + maxVisible - 1);
         startPage = Math.max(0, endPage - maxVisible + 1);
 
-        // 若總頁數 > 3 且目前頁碼大於 1，顯示「...」跳到第一頁
         if (startPage > 0) {
             const leftEllipsis = document.createElement("span");
             leftEllipsis.textContent = "...";
@@ -128,7 +152,6 @@ export default function products() {
             paginationEl.appendChild(leftEllipsis);
         }
 
-        // 顯示實際的頁碼按鈕
         for (let i = startPage; i <= endPage; i++) {
             const btn = document.createElement("button");
             btn.className = "turn-page__btn";
@@ -140,7 +163,6 @@ export default function products() {
             paginationEl.appendChild(btn);
         }
 
-        // 若總頁數 > 3 且尚未到最後一頁，顯示右側「...」跳到最後一頁
         if (endPage < totalPages - 1) {
             const rightEllipsis = document.createElement("span");
             rightEllipsis.textContent = "...";
@@ -153,7 +175,7 @@ export default function products() {
             paginationEl.appendChild(rightEllipsis);
         }
 
-        // 下一頁按鈕
+        // 下一頁
         const nextBtn = document.createElement("button");
         nextBtn.className = "turn-page__btn turn-page__btn--next";
         nextBtn.innerHTML = `<img src="./img/ic-arrow_right.png" alt="下一頁">`;
@@ -167,23 +189,18 @@ export default function products() {
         paginationEl.appendChild(nextBtn);
     }
 
-    // 類別按鈕事件綁定 + active 樣式切換
-    const categoryButtons = el.querySelectorAll(".product-list__category-btn");
-    categoryButtons.forEach(button => {
-        button.addEventListener("click", () => {
-            const badge = button.dataset.badge;
-
-            // 切換 active 樣式
-            categoryButtons.forEach(btn => btn.classList.remove("product-list__category-btn--active"));
-            button.classList.add("product-list__category-btn--active");
-
-            // 篩選資料
-            currentData = badge === "all" ? productsData : productsData.filter(p => p.badge === badge);
-            currentPage = 0;
-            renderProducts(currentPage);
+    // 類別按鈕事件 + hash 篩選
+    categoryButtons.forEach(btn => {
+        btn.addEventListener("click", () => {
+            const badge = btn.dataset.badge;
+            location.hash = `products?category=${badge}`;
         });
     });
 
-    renderProducts(currentPage);
+    // 初始分類
+    const initialCategory = getInitialCategory();
+    setActiveCategoryButton(initialCategory);
+    filterDataByBadge(initialCategory);
+
     return el;
 }
