@@ -47,14 +47,8 @@ export default function checkout3_2() {
                     </div>
 
                     <div class="checkout__select-group">
-                        <select name="city" id="city" class="checkout__select">
-                            <option value="臺北市">臺北市</option>
-                            <option value="臺中市">臺中市</option>
-                            <option value="高雄市" selected>高雄市</option>
-                        </select>
-                        <select name="district" id="district" class="checkout__select">
-                            <option value="新興區" selected>新興區</option>
-                        </select>
+                        <select name="city" id="city" class="checkout__select"></select>
+                        <select name="district" id="district" class="checkout__select"></select>
                     </div>
 
                     <input type="text" id="address" placeholder="幸福路 520 號" class="checkout__input">
@@ -137,6 +131,7 @@ export default function checkout3_2() {
     </section>
   `;
 
+    // 切換電子/郵寄發票
     const typeButtons = el.querySelectorAll(".checkout__type-btn");
     typeButtons.forEach((btn) => {
         btn.addEventListener("click", () => {
@@ -146,10 +141,71 @@ export default function checkout3_2() {
         });
     });
 
-
+    // 點擊確認結帳
     const checkoutBtn = el.querySelector(".checkout__button");
     checkoutBtn.addEventListener("click", () => {
         location.hash = "checkout_success";
-    })
+    });
+
+    // ====== 縣市資料 ======
+    const taiwanCities = {
+        "臺北市": ["中正區", "大同區", "中山區", "松山區", "大安區", "萬華區", "信義區", "士林區", "北投區", "內湖區", "南港區", "文山區"],
+        "新北市": ["板橋區", "新莊區", "中和區", "永和區", "土城區", "蘆洲區", "三重區", "汐止區", "淡水區", "樹林區", "鶯歌區", "三峽區"],
+        "桃園市": ["桃園區", "中壢區", "平鎮區", "八德區", "楊梅區", "龜山區", "蘆竹區", "龍潭區"],
+        "臺中市": ["中區", "東區", "南區", "西區", "北區", "西屯區", "南屯區", "北屯區", "豐原區", "大里區", "太平區"],
+        "臺南市": ["中西區", "東區", "南區", "北區", "安平區", "安南區", "永康區", "仁德區"],
+        "高雄市": ["新興區", "前金區", "苓雅區", "鹽埕區", "鼓山區", "左營區", "三民區", "楠梓區", "小港區", "前鎮區", "鳳山區", "岡山區"],
+        "基隆市": ["中正區", "信義區", "仁愛區", "中山區", "安樂區", "暖暖區", "七堵區"],
+        "新竹市": ["東區", "北區", "香山區"],
+        "嘉義市": ["東區", "西區"],
+        "宜蘭縣": ["宜蘭市", "羅東鎮", "蘇澳鎮", "頭城鎮", "員山鄉"],
+        "彰化縣": ["彰化市", "員林市", "鹿港鎮", "和美鎮", "田中鎮"],
+        "雲林縣": ["斗六市", "虎尾鎮", "西螺鎮", "北港鎮"],
+        "屏東縣": ["屏東市", "潮州鎮", "東港鎮", "恆春鎮"],
+        "花蓮縣": ["花蓮市", "吉安鄉", "新城鄉"],
+        "臺東縣": ["臺東市", "成功鎮", "關山鎮"],
+        "南投縣": ["南投市", "草屯鎮", "埔里鎮", "竹山鎮"],
+        "澎湖縣": ["馬公市", "湖西鄉"],
+        "金門縣": ["金城鎮", "金湖鎮", "金沙鎮"],
+        "連江縣": ["南竿鄉", "北竿鄉"]
+    };
+
+    const citySelect = el.querySelector("#city");
+    const districtSelect = el.querySelector("#district");
+
+    // 初始化縣市選單
+    function populateCities() {
+        citySelect.innerHTML = "";
+        Object.keys(taiwanCities).forEach(city => {
+            const option = document.createElement("option");
+            option.value = city;
+            option.textContent = city;
+            citySelect.appendChild(option);
+        });
+    }
+
+    // 根據選定縣市更新鄉鎮市區
+    function populateDistricts(city) {
+        districtSelect.innerHTML = "";
+        taiwanCities[city].forEach(district => {
+            const option = document.createElement("option");
+            option.value = district;
+            option.textContent = district;
+            districtSelect.appendChild(option);
+        });
+    }
+
+    // 當縣市改變時重新載入鄉鎮市區
+    citySelect.addEventListener("change", () => {
+        const selectedCity = citySelect.value;
+        populateDistricts(selectedCity);
+    });
+
+    // 預設選項：高雄市 - 新興區
+    populateCities();
+    citySelect.value = "高雄市";
+    populateDistricts("高雄市");
+    districtSelect.value = "新興區";
+
     return el;
 }

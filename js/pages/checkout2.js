@@ -24,7 +24,10 @@ export default function checkout2() {
                 <!-- 信用卡卡號 -->
                 <div class="checkout__field">
                     <label for="card-number" class="checkout__label">信用卡卡號</label>
-                    <input type="text" id="card-number" placeholder="9012-3456-7890-1234" class="checkout__input">
+                    <div class="checkout__input-flex">
+                        <input type="text" id="card-number" placeholder="9012-3456-7890-1234" class="checkout__input">
+                        <img src="./img/ic-credit_card.png" alt="信用卡圖示" class="checkout__icon">
+                    </div>
                 </div>
 
                 <!-- 持卡人姓名 -->
@@ -42,33 +45,10 @@ export default function checkout2() {
                     <div class="checkout__select-group">
                         <select name="expiry-month" id="expiry-month" class="checkout__select">
                             <option>月</option>
-                            <option value="1">1</option>
-                            <option value="2">2</option>
-                            <option value="3">3</option>
-                            <option value="4">4</option>
-                            <option value="5">5</option>
-                            <option value="6">6</option>
-                            <option value="7">7</option>
-                            <option value="8">8</option>
-                            <option value="9">9</option>
-                            <option value="10">10</option>
-                            <option value="11">11</option>
-                            <option value="12">12</option>
                         </select>
 
                         <select name="expiry-year" id="expiry-year" class="checkout__select">
                             <option>年</option>
-                            <option value="2025">2025</option>
-                            <option value="2026">2026</option>
-                            <option value="2027">2027</option>
-                            <option value="2028">2028</option>
-                            <option value="2029">2029</option>
-                            <option value="2030">2030</option>
-                            <option value="2031">2031</option>
-                            <option value="2032">2032</option>
-                            <option value="2033">2033</option>
-                            <option value="2034">2034</option>
-                            <option value="2035">2035</option>
                         </select>
                     </div>
                 </div>
@@ -146,10 +126,33 @@ export default function checkout2() {
     </section>
   `;
 
+    // 下一步按鈕導頁
     const checkoutBtn = el.querySelector(".checkout__button");
     checkoutBtn.addEventListener("click", () => {
         location.hash = "checkout3_1";
-    })
+    });
+
+    // === 自動產生有效期限選項 ===
+    const monthSelect = el.querySelector("#expiry-month");
+    const yearSelect = el.querySelector("#expiry-year");
+
+    // 產生月份（1~12）
+    for (let i = 1; i <= 12; i++) {
+        const option = document.createElement("option");
+        option.value = i.toString().padStart(2, "0");
+        option.textContent = i;
+        monthSelect.appendChild(option);
+    }
+
+    // 產生年份（從今年開始往後 10 年）
+    const currentYear = new Date().getFullYear();
+    for (let i = 0; i < 10; i++) {
+        const year = currentYear + i;
+        const option = document.createElement("option");
+        option.value = year;
+        option.textContent = year;
+        yearSelect.appendChild(option);
+    }
 
     return el;
 }

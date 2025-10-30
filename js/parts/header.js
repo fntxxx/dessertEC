@@ -18,7 +18,7 @@ export default function header() {
         </div>
 
         <div class="nav__links">
-            <div class="nav__links-bar--lg">
+            <div class="nav__links-bar nav__links-bar--lg">
                 <a href="#home">首頁</a>
                 <a href="#products">甜點</a>
                 <a href="#login">登入</a>
@@ -32,7 +32,7 @@ export default function header() {
         </div>
     </nav>
 
-    <div class="nav__links-bar--sm">
+    <div class="nav__links-bar nav__links-bar--sm">
         <a href="#home">首頁</a>
         <a href="#products">甜點</a>
         <a href="#login">登入</a>

@@ -70,9 +70,11 @@
         height: 56px;
         border: none;
         outline: none;
-        text-align: right;
+        text-align: center;
         flex: 1;
         min-width: 0;
+        font: normal normal 500 16px/20px $font-primary;
+        color: $color-primary;
     }
 
     &__button {

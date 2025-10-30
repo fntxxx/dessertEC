@@ -273,6 +273,9 @@ header a {
   align-items: center;
   gap: clamp(0px, 8vw, 80px);
 }
+.nav__links-bar a:hover {
+  transform: scale(1.1);
+}
 .nav__links-bar--lg {
   display: flex;
   justify-content: space-between;
@@ -294,6 +297,9 @@ header a {
     align-items: center;
     flex-wrap: wrap;
   }
+}
+.nav__cart a:hover {
+  transform: scale(1.1);
 }
 
 /* footer.scss */
@@ -369,9 +375,11 @@ header a {
   height: 56px;
   border: none;
   outline: none;
-  text-align: right;
+  text-align: center;
   flex: 1;
   min-width: 0;
+  font: normal normal 500 16px/20px "PingFang TC", "Noto Sans TC", "Microsoft JhengHei", sans-serif;
+  color: #3F5D45;
 }
 .footer__button {
   background: #FFE180;
@@ -928,6 +936,9 @@ header a {
 .product-list__category-table tbody td button:hover, .product-list__category-table tbody td button:active {
   background-color: #EAF0ED;
 }
+.product-list__category-table tbody td button.product-list__category-btn--active {
+  background-color: #EAF0ED;
+}
 
 /* Product Card */
 .product-card {
@@ -1073,6 +1084,9 @@ header a {
 
 /* Pagination */
 .turn-page__btn {
+  display: flex;
+  justify-content: center;
+  align-items: center;
   background: transparent;
   border: 1px solid #EAF0ED;
   width: 60px;
@@ -1088,6 +1102,7 @@ header a {
   font: 300 20px/58px "PingFang TC", "Noto Sans TC", "Microsoft JhengHei", sans-serif;
 }
 .turn-page__number--active {
+  flex: 1;
   color: #EAF0ED;
   background-color: #3F5D45;
 }
@@ -1158,7 +1173,7 @@ header a {
   border: none;
   outline: none;
   font: normal normal 300 16px/20px "PingFang TC", "Noto Sans TC", "Microsoft JhengHei", sans-serif;
-  color: #8DA291;
+  color: #3F5D45;
   background: transparent;
 }
 .login__input::placeholder {
@@ -1656,6 +1671,37 @@ header a {
 .checkout__input:focus {
   outline: none;
   border-color: #FFE180;
+}
+.checkout__input-flex {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: #EAF0ED;
+  border: 3px solid #EAF0ED;
+  transition: border-color 0.3s ease;
+}
+.checkout__input-flex:focus-within {
+  border-color: #FFE180;
+}
+.checkout__input-flex .checkout__input {
+  flex: 1;
+  border: none;
+  background: transparent;
+  padding: 17px 16px;
+  color: #3F5D45;
+  font: normal normal 300 16px/20px "PingFang TC", "Noto Sans TC", "Microsoft JhengHei", sans-serif;
+}
+.checkout__input-flex .checkout__input::placeholder {
+  color: #8DA291;
+}
+.checkout__input-flex .checkout__input:focus {
+  outline: none;
+}
+.checkout__icon {
+  width: 20px;
+  height: 20px;
+  margin: 20px 22px;
+  flex-shrink: 0;
 }
 .checkout__select-group {
   display: flex;

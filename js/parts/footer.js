@@ -46,5 +46,14 @@ export default function footer() {
         </div>
     </div>
   `;
+
+    // === 加入清空功能 ===
+    const input = el.querySelector(".footer__input");
+    const button = el.querySelector(".footer__button");
+
+    button.addEventListener("click", () => {
+        input.value = ""; // 清空輸入框
+    });
+
     return el;
 }

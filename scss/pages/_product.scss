@@ -111,6 +111,10 @@
                 &:active {
                     background-color: $color-secondary-light;
                 }
+
+                &.product-list__category-btn--active {
+                    background-color: $color-secondary-light;
+                }
             }
         }
     }
@@ -131,6 +135,7 @@
 /* Pagination */
 .turn-page {
     &__btn {
+        @include flex-center;
         background: transparent;
         border: 1px solid $color-secondary-light;
         width: 60px;
@@ -148,6 +153,7 @@
         font: 300 20px/58px $font-primary;
 
         &--active {
+            flex: 1;
             color: $color-secondary-light;
             background-color: $color-primary;
         }

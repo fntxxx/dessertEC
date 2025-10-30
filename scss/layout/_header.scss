@@ -58,6 +58,12 @@ header {
         gap: clamp(0px, 8vw, 80px);
 
         &-bar {
+            a {
+                &:hover {
+                    transform: scale(1.1);
+                }
+            }
+
             &--lg {
                 @include flex-between;
                 gap: clamp(0px, 6vw, 60px);
@@ -78,6 +84,14 @@ header {
                         flex-wrap: wrap;
                     }
                 }
+            }
+        }
+    }
+
+    &__cart {
+        a {
+            &:hover {
+                transform: scale(1.1);
             }
         }
     }
