@@ -24,6 +24,7 @@
         @include mobile {
             flex: 1;
             width: 100%;
+            max-width: 315px;
         }
     }
 
@@ -58,6 +59,7 @@
         @include mobile {
             flex-direction: column;
             align-items: flex-end;
+            gap: 0;
         }
     }
 
@@ -207,6 +209,7 @@
         background-color: $color-primary;
 
         @include mobile {
+            max-width: none;
             width: 100%;
             background-color: $color-white;
         }
@@ -220,7 +223,8 @@
         @include mobile {
             background-color: $color-secondary-light;
             color: $color-primary;
-            margin: 0 30px;
+            max-width: 315px;
+            margin: 0 auto 16px;
         }
     }
 
@@ -243,7 +247,8 @@
         gap: 8px;
 
         @include mobile {
-            margin: 16px 30px;
+            max-width: 315px;
+            margin: 0 auto;
         }
     }
 
@@ -271,6 +276,11 @@
         font: normal normal 600 24px/65px $font-primary;
         cursor: pointer;
         transition: background-color 0.3s ease, transform 0.2s ease;
+        margin-top: 8px;
+
+        @include mobile {
+            margin-top: 16px;
+        }
 
         &:hover,
         &:active {

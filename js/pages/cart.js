@@ -36,7 +36,7 @@ export default function cart() {
                     <img src="./img/ic-delete.png" alt="刪除商品" class="cart__delete-icon">
                 </button>
             </div>
-             <hr class="cart__divider--sm">
+            <hr class="cart__divider--sm">
         </div>
         <hr class="cart__divider">
     `).join("");
