@@ -1467,6 +1467,7 @@ header a {
   align-items: center;
   align-items: center;
   max-width: 200px;
+  gap: 30px;
 }
 @media (max-width: 568px) {
   .cart__item-summary {

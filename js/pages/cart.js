@@ -1,8 +1,8 @@
 /* cart.js */
 
 export const products = [
-    { img: "./img/cart/product1.avif", name: "焦糖馬卡龍", price: 450, qty: 2 },
-    { img: "./img/cart/product2.avif", name: "草莓塔", price: 450, qty: 1 },
+    { img: "./img/cart/product1.avif", name: "焦糖馬卡龍", price: 420, qty: 2 },
+    { img: "./img/cart/product2.avif", name: "草莓塔", price: 550, qty: 1 },
     { img: "./img/cart/product3.avif", name: "巧克力布朗尼", price: 450, qty: 3 },
 ];
 

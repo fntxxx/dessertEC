@@ -163,6 +163,7 @@
         @include flex-between;
         align-items: center;
         max-width: 200px;
+        gap: 30px;
 
         @include mobile {
             justify-content: center;
