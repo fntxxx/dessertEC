@@ -1,3 +1,5 @@
+/* products-data.js */
+
 const productsData = [
     {
         "id": 1,
@@ -284,14 +286,14 @@ const productsData = [
         "name": "法式焦糖布丁",
         "price": 450,
         "image": "./img/product/product5.avif",
-        "badge": "popular"
+        "badge": "new"
     },
     {
         "id": 42,
         "name": "草莓千層派",
         "price": 420,
         "image": "./img/product/product6.avif",
-        "badge": "popular"
+        "badge": "new"
     },
     {
         "id": 43,

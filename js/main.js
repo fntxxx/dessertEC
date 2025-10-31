@@ -1,4 +1,5 @@
-// main.js
+/* main.js */
+
 import header from "./parts/header.js";
 import footer from "./parts/footer.js";
 import { loadPage } from "./router.js";

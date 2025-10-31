@@ -18,7 +18,8 @@
 
     /* 左側內容區：購物車商品列表 */
     &__content {
-        flex: 620;
+        max-width: 620px;
+        flex: 1;
 
         @include mobile {
             flex: 1;
@@ -51,6 +52,8 @@
     /* 單一商品項目 */
     &__item {
         @include flex-between;
+        flex: 1;
+        gap: 39px;
 
         @include mobile {
             flex-direction: column;
@@ -59,8 +62,9 @@
     }
 
     &__item-info {
-        @include flex-between;
-
+        @include flex-center;
+        gap: 20px;
+        flex: 1;
     }
 
     &__item-image {
@@ -73,7 +77,9 @@
     &__item-details {
         display: flex;
         justify-content: space-between;
+        align-items: center;
         flex-wrap: wrap;
+        width: 100%;
 
         @include mobile {
             flex-direction: column;
@@ -85,8 +91,8 @@
         display: flex;
         justify-content: space-between;
         flex-direction: column;
-        margin-left: 39px;
         gap: 3px;
+        min-width: 150px;
     }
 
     &__item-name {
@@ -102,7 +108,6 @@
     &__item-quantity {
         display: flex;
         align-items: center;
-        margin-left: 39px;
     }
 
     &__divider {
@@ -138,7 +143,8 @@
         font-size: 18px;
         transition: background-color 0.2s ease;
 
-        &:hover {
+        &:hover,
+        &:active {
             background-color: $color-secondary-light;
         }
     }
@@ -153,6 +159,8 @@
 
     &__item-summary {
         @include flex-between;
+        align-items: center;
+        max-width: 200px;
 
         @include mobile {
             justify-content: center;
@@ -162,7 +170,6 @@
     &__item-total {
         font: normal normal 600 20px/20px $font-primary;
         color: $color-primary;
-        margin: 0 39px;
 
         @include mobile {
             margin: 0;
@@ -186,7 +193,8 @@
             height: 20px;
             transition: transform 0.2s ease;
 
-            &:hover {
+            &:hover,
+            &:active {
                 transform: scale(1.1);
             }
         }
@@ -194,7 +202,8 @@
 
     /* 右側內容區：訂單摘要 */
     &__summary {
-        flex: 300;
+        max-width: 300px;
+        flex: 1;
         background-color: $color-primary;
 
         @include mobile {
@@ -263,7 +272,8 @@
         cursor: pointer;
         transition: background-color 0.3s ease, transform 0.2s ease;
 
-        &:hover {
+        &:hover,
+        &:active {
             background-color: darken($color-primary-light, 5%);
             transform: scale(1.02);
         }

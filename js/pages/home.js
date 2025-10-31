@@ -1,3 +1,7 @@
+/* home.js */
+
+import productsData from "./products-data.js";
+
 export default function home() {
     const el = document.createElement("section");
     el.innerHTML = `
@@ -79,80 +83,61 @@ export default function home() {
 
     <section class="section-products">
         <div class="section-products__list">
-            <div class="section-products__item">
-                <div class="section-products__image">
-                    <img src="./img/home/product1.avif" alt="焦糖馬卡龍">
-                    <div class="section-products__badge">本日精選</div>
-                    <button class="section-products__fav">
-                        <img src="./img/ic-favorite.png" alt="加入收藏">
-                    </button>
-                </div>
-                <div class="section-products__info">
-                    <p class="section-products__name">焦糖馬卡龍</p>
-                    <p class="section-products__price">NT$ 450</p>
-                </div>
-                <div class="section-products__action">
-                    <button class="section-products__btn">
-                        <p>加入購物車</p>
-                    </button>
-                </div>
-            </div>
-
-            <div class="section-products__item">
-                <div class="section-products__image">
-                    <img src="./img/home/product2.avif" alt="焦糖馬卡龍">
-                    <div class="section-products__badge">本日精選</div>
-                    <button class="section-products__fav">
-                        <img src="./img/ic-favorite.png" alt="加入收藏">
-                    </button>
-                </div>
-                <div class="section-products__info">
-                    <p class="section-products__name">焦糖馬卡龍</p>
-                    <p class="section-products__price">NT$ 450</p>
-                </div>
-                <div class="section-products__action">
-                    <button class="section-products__btn">
-                        <p>加入購物車</p>
-                    </button>
-                </div>
-            </div>
-
-            <div class="section-products__item">
-                <div class="section-products__image">
-                    <img src="./img/home/product3.avif" alt="焦糖馬卡龍">
-                    <div class="section-products__badge">本日精選</div>
-                    <button class="section-products__fav">
-                        <img src="./img/ic-favorite.png" alt="加入收藏">
-                    </button>
-                </div>
-                <div class="section-products__info">
-                    <p class="section-products__name">焦糖馬卡龍</p>
-                    <p class="section-products__price">NT$ 450</p>
-                </div>
-                <div class="section-products__action">
-                    <button class="section-products__btn">
-                        <p>加入購物車</p>
-                    </button>
-                </div>
-            </div>
         </div>
     </section>
     `;
 
+    // 首頁三個類別按鈕：切換至商品頁
     const heroBtn = el.querySelectorAll(".hero__button");
     heroBtn.forEach(btn => {
         btn.addEventListener("click", () => {
-            const category = btn.dataset.category; // 取得對應類別
-            location.hash = `products?category=${category}`; // 帶上參數
+            const category = btn.dataset.category;
+            location.hash = `products?category=${category}`;
         });
     });
 
-    const addToCart = el.querySelectorAll(".section-products__btn");
-    addToCart.forEach(btn => {
-        btn.addEventListener("click", () => {
-            location.hash = "cart";
-        });
+    const sectionProductsList = el.querySelector(".section-products__list");
+
+    // 篩選出「本日精選」商品
+    const dailyProducts = productsData.filter(item => item.badge === "daily");
+
+    // 隨機取出 3 筆
+    const randomDaily = dailyProducts
+        .sort(() => Math.random() - 0.5)
+        .slice(0, 3);
+
+    const fragment = document.createDocumentFragment();
+
+    randomDaily.forEach(item => {
+        const productEl = document.createElement("div");
+        productEl.classList.add("section-products__item");
+        productEl.innerHTML = `
+            <div class="section-products__image">
+                <img src="${item.image}" alt="${item.name}">
+                <div class="section-products__badge">本日精選</div>
+                <button class="section-products__fav">
+                    <img src="./img/ic-favorite.png" alt="加入收藏">
+                </button>
+            </div>
+            <div class="section-products__info">
+                <p class="section-products__name">${item.name}</p>
+                <p class="section-products__price">NT$ ${item.price}</p>
+            </div>
+            <div class="section-products__action">
+                <button class="section-products__btn"><p>加入購物車</p></button>
+            </div>
+        `;
+        fragment.appendChild(productEl);
     });
+
+    sectionProductsList.appendChild(fragment);
+
+    // 事件委派：加入購物車
+    sectionProductsList.addEventListener("click", e => {
+        const btn = e.target.closest(".section-products__btn");
+        if (btn) location.hash = "cart";
+    });
+
 
     return el;
 }

@@ -26,11 +26,19 @@ header {
 
         @include mobile {
             @include flex-center;
-            width: 24px;
-            height: 24px;
+            width: 30px;
+            height: 30px;
+            border: none;
+            background-color: transparent;
 
-            &:hover {
+            &:hover,
+            &:active {
                 transform: scale(1.1);
+            }
+
+            &--active {
+                background-color: $color-secondary-light;
+                border-radius: 50%;
             }
         }
     }
@@ -59,7 +67,9 @@ header {
 
         &-bar {
             a {
-                &:hover {
+
+                &:hover,
+                &:active {
                     transform: scale(1.1);
                 }
             }
@@ -90,7 +100,9 @@ header {
 
     &__cart {
         a {
-            &:hover {
+
+            &:hover,
+            &:active {
                 transform: scale(1.1);
             }
         }

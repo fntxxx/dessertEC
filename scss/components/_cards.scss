@@ -43,7 +43,8 @@
             display: block;
             transition: transform 0.3s ease;
 
-            &:hover {
+            &:hover,
+            &:active {
                 transform: scale(1.05);
             }
         }
@@ -84,7 +85,8 @@
             transition: filter 0.3s ease;
         }
 
-        &:hover {
+        &:hover,
+        &:active {
             transform: scale(1.1);
         }
     }
@@ -131,8 +133,10 @@
         cursor: pointer;
         transition: background-color 0.3s ease, transform 0.3s ease;
 
-        &:hover {
+        &:hover,
+        &:active {
             transform: scale(1.03);
+            background-color: darken($color-secondary, 5%);
         }
 
         p {

@@ -1,5 +1,26 @@
+/* checkout1.js */
+
+import { products } from "./cart.js";
+
 export default function checkout1() {
     const el = document.createElement("section");
+
+    const itemsHTML = products.map(p => `
+        <div class="checkout-cart__item">
+            <div class="checkout-cart__image-wrapper">
+                <img src="${p.img}" alt="${p.name}" class="checkout-cart__image">
+            </div>
+            <div class="checkout-cart__details">
+                <p class="checkout-cart__name">${p.name}（${p.qty}）</p>
+                <p class="checkout-cart__price">NT$ ${p.price * p.qty}</p>
+            </div>
+        </div>
+    `).join("");
+
+    const subtotal = products.reduce((sum, p) => sum + p.price * p.qty, 0);
+    const shipping = 300;
+    const total = subtotal + shipping;
+
     el.innerHTML = `
     <section class="checkout">
         <form class="checkout__form">
@@ -55,42 +76,16 @@ export default function checkout1() {
             <aside class="checkout-summary">
                 <h3 class="checkout-summary__title">訂單摘要</h3>
                 <div class="checkout-summary__list">
-                    <p class="checkout-summary__item"><span>小計</span><span>NT$ 2,700</span></p>
-                    <p class="checkout-summary__item"><span>運費</span><span>NT$ 300</span></p>
-                    <p class="checkout-summary__item checkout-summary__item--total"><span>總計</span><span>NT$ 3,000</span></p>
+                    <p class="checkout-summary__item"><span>小計</span><span>NT$ ${subtotal}</span></p>
+                    <p class="checkout-summary__item"><span>運費</span><span>NT$ ${shipping}</span></p>
+                    <p class="checkout-summary__item checkout-summary__item--total"><span>總計</span><span>NT$ ${total}</span></p>
                 </div>
             </aside>
 
             <aside class="checkout-cart">
                 <h3 class="checkout-cart__title">購物清單</h3>
                 <div class="checkout-cart__list">
-                    <div class="checkout-cart__item">
-                        <div class="checkout-cart__image-wrapper">
-                            <img src="./img/cart/product1.avif" alt="焦糖馬卡龍商品圖片" class="checkout-cart__image">
-                        </div>
-                        <div class="checkout-cart__details">
-                            <p class="checkout-cart__name">焦糖馬卡龍（2）</p>
-                            <p class="checkout-cart__price">NT$ 900</p>
-                        </div>
-                    </div>
-                    <div class="checkout-cart__item">
-                        <div class="checkout-cart__image-wrapper">
-                            <img src="./img/cart/product2.avif" alt="焦糖馬卡龍商品圖片" class="checkout-cart__image">
-                        </div>
-                        <div class="checkout-cart__details">
-                            <p class="checkout-cart__name">焦糖馬卡龍（2）</p>
-                            <p class="checkout-cart__price">NT$ 900</p>
-                        </div>
-                    </div>
-                    <div class="checkout-cart__item">
-                        <div class="checkout-cart__image-wrapper">
-                            <img src="./img/cart/product3.avif" alt="焦糖馬卡龍商品圖片" class="checkout-cart__image">
-                        </div>
-                        <div class="checkout-cart__details">
-                            <p class="checkout-cart__name">焦糖馬卡龍（2）</p>
-                            <p class="checkout-cart__price">NT$ 900</p>
-                        </div>
-                    </div>
+                    ${itemsHTML}
                 </div>
             </aside>
         </div>

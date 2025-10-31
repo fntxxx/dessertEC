@@ -1,7 +1,9 @@
-export default function login() {
-  const el = document.createElement("section");
+/* login.js */
 
-  el.innerHTML = `
+export default function login() {
+    const el = document.createElement("section");
+
+    el.innerHTML = `
     <section class="login">
         <div class="login__container">
             <form id="login-form" class="login__form" autocomplete="on">
@@ -76,22 +78,23 @@ export default function login() {
     </section>
   `;
 
-  // 綁定表單事件
-  const form = el.querySelector("#login-form");
-  form.addEventListener("submit", (e) => {
-    e.preventDefault(); // 防止重新整理
+    // 綁定表單事件
+    const form = el.querySelector("#login-form");
+    form.addEventListener("submit", (e) => {
+        e.preventDefault(); // 防止重新整理
+        alert("登入成功");
 
-    // 假設登入成功後導回首頁
-    location.hash = "home";
-  });
-
-  const socialBtn = el.querySelectorAll(".login__social-btn");
-  socialBtn.forEach(btn => {
-    btn.addEventListener("click", () => {
-      location.hash = "home";
+        location.hash = "home";
     });
-  });
+
+    const socialBtn = el.querySelectorAll(".login__social-btn");
+    socialBtn.forEach(btn => {
+        btn.addEventListener("click", () => {
+            alert("登入成功");
+            location.hash = "home";
+        });
+    });
 
 
-  return el;
+    return el;
 }

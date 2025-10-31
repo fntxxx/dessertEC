@@ -142,7 +142,8 @@
         height: 60px;
         transition: background-color 0.3s ease;
 
-        &:hover {
+        &:hover,
+        &:active {
             background-color: $color-secondary-light;
         }
     }

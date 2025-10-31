@@ -11,9 +11,9 @@ export default function footer() {
                 <div class="footer__ic-mail">
                     <img src="./img/footer/ic-mail.png" alt="電子郵件圖示">
                 </div>
-                <input type="email" class="footer__input">
-                <button type="button" class="footer__button">
-                    <img src="./img/footer/ic-arrow.png" alt="送出箭頭">
+                <input type="email" class="footer__input" aria-label="訂閱電子報的電子郵件輸入欄">
+                <button type="button" class="footer__button" aria-label="送出訂閱">
+                    <img src="./img/footer/ic-arrow.png" alt="">
                 </button>
             </div>
         </div>
@@ -24,7 +24,7 @@ export default function footer() {
             <div class="footer__info">
                 <div class="footer__brand">
                     <div class="footer__logo">
-                        <img src="./img/footer/logotype-lg-dark.png" alt="">
+                        <img src="./img/footer/logotype-lg-dark.png" alt="Sweetaste 品牌標誌">
                     </div>
                     <div class="footer__contact">
                         <p>07-1234-5678</p>
@@ -33,7 +33,7 @@ export default function footer() {
                     </div>
                 </div>
                 <div class="footer__slogan">
-                    <img src="./img/footer/sm-今天是個吃甜點的好日子.png" alt="">
+                    <img src="./img/footer/sm-今天是個吃甜點的好日子.png" alt="今天是個吃甜點的好日子">
                 </div>
             </div>
             <div class="footer__social">
@@ -52,8 +52,13 @@ export default function footer() {
     const button = el.querySelector(".footer__button");
 
     button.addEventListener("click", () => {
-        input.value = ""; // 清空輸入框
+        input.value = "";
+        alert("訂閱成功！");
     });
+
+    const year = new Date().getFullYear();
+    el.querySelector(".footer__copyright").textContent = `© ${year} Sweetaste* All Rights Reserved`;
+
 
     return el;
 }

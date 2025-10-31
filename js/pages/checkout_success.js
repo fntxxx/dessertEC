@@ -1,6 +1,8 @@
+/* checkout_success.js */
+
 export default function checkout_success() {
-  const el = document.createElement("section");
-  el.innerHTML = `
+    const el = document.createElement("section");
+    el.innerHTML = `
     <section class="checkout-success">
         <div class="checkout-success__container">
             <img src="./img/checkout/success-bg.avif" alt="付款成功主視覺" class="checkout-success__image">
@@ -31,12 +33,12 @@ export default function checkout_success() {
     </section>
   `;
 
-  const checkoutBtn = el.querySelectorAll(".checkout-success__button");
-  checkoutBtn.forEach((btn) => {
-    btn.addEventListener("click", () => {
-      location.hash = "home";
+    const checkoutBtn = el.querySelectorAll(".checkout-success__button");
+    checkoutBtn.forEach((btn) => {
+        btn.addEventListener("click", () => {
+            location.hash = "home";
+        })
     })
-  })
 
-  return el;
+    return el;
 }

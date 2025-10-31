@@ -2,18 +2,18 @@ export default function header() {
     const el = document.createElement("header");
     el.innerHTML = `
     <nav class="nav">
-        <div class="nav__menu">
-            <img src="./img/header/menu.png" alt="選單圖示" class="nav__logo-img">
-        </div>
+        <button type="button" class="nav__menu" aria-label="開啟選單">
+            <img src="./img/header/menu.png" alt="選單圖示" class="nav__menu-img">
+        </button>
 
         <div class="nav__logo--lg">
             <a href="#home">
-                <img src="./img/header/logo-all-dark.png" alt="LOGO" class="nav__logo-img">
+                <img src="./img/header/logo-all-dark.png" alt="SweetTaste 品牌標誌" class="nav__logo-img">
             </a>
         </div>
         <div class="nav__logo--sm">
             <a href="#home">
-                <img src="./img/header/logotype-sm-dark.png" alt="LOGO" class="nav__logo-img">
+                <img src="./img/header/logotype-sm-dark.png" alt="SweetTaste 品牌標誌" class="nav__logo-img">
             </a>
         </div>
 
@@ -43,7 +43,15 @@ export default function header() {
     const navLinks = el.querySelector(".nav__links-bar--sm");
 
     navMenu.addEventListener("click", () => {
+        navMenu.classList.toggle("nav__menu--active");
         navLinks.classList.toggle("active");
+    });
+
+    navLinks.querySelectorAll("a").forEach(link => {
+        link.addEventListener("click", () => {
+            navMenu.classList.remove("nav__menu--active");
+            navLinks.classList.remove("active");
+        });
     });
 
     return el;

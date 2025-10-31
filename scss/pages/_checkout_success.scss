@@ -102,8 +102,10 @@
             margin: 0;
         }
 
-        &:hover {
+        &:hover,
+        &:active {
             transform: scale(1.03);
+            background-color: darken($color-primary-light, 5%);
         }
 
         &--lg {

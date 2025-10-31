@@ -86,6 +86,7 @@
         &:hover,
         &:active {
             transform: translateX(2px);
+            background-color: darken($color-primary-light, 5%);
         }
     }
 

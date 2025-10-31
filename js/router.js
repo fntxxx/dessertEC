@@ -1,3 +1,5 @@
+/* router.js */
+
 import home from "./pages/home.js";
 import products from "./pages/products.js";
 import login from "./pages/login.js";

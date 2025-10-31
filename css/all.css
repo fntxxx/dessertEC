@@ -244,11 +244,17 @@ header a {
     display: flex;
     justify-content: center;
     align-items: center;
-    width: 24px;
-    height: 24px;
+    width: 30px;
+    height: 30px;
+    border: none;
+    background-color: transparent;
   }
-  .nav__menu:hover {
+  .nav__menu:hover, .nav__menu:active {
     transform: scale(1.1);
+  }
+  .nav__menu--active {
+    background-color: #EAF0ED;
+    border-radius: 50%;
   }
 }
 .nav__logo--lg {
@@ -273,7 +279,7 @@ header a {
   align-items: center;
   gap: clamp(0px, 8vw, 80px);
 }
-.nav__links-bar a:hover {
+.nav__links-bar a:hover, .nav__links-bar a:active {
   transform: scale(1.1);
 }
 .nav__links-bar--lg {
@@ -298,7 +304,7 @@ header a {
     flex-wrap: wrap;
   }
 }
-.nav__cart a:hover {
+.nav__cart a:hover, .nav__cart a:active {
   transform: scale(1.1);
 }
 
@@ -389,6 +395,7 @@ header a {
 }
 .footer__button:hover, .footer__button:active {
   transform: translateX(2px);
+  background-color: rgb(255, 218.9763779528, 102.5);
 }
 .footer__content {
   background: #EAF0ED;
@@ -737,7 +744,7 @@ header a {
   display: block;
   transition: transform 0.3s ease;
 }
-.section-products__image img:hover {
+.section-products__image img:hover, .section-products__image img:active {
   transform: scale(1.05);
 }
 .section-products__badge {
@@ -775,7 +782,7 @@ header a {
   height: 20px;
   transition: filter 0.3s ease;
 }
-.section-products__fav:hover {
+.section-products__fav:hover, .section-products__fav:active {
   transform: scale(1.1);
 }
 .section-products__info {
@@ -819,8 +826,9 @@ header a {
   cursor: pointer;
   transition: background-color 0.3s ease, transform 0.3s ease;
 }
-.section-products__btn:hover {
+.section-products__btn:hover, .section-products__btn:active {
   transform: scale(1.03);
+  background-color: rgb(219.125, 229.375, 224.25);
 }
 .section-products__btn p {
   margin: 0;
@@ -981,7 +989,7 @@ header a {
   display: block;
   transition: transform 0.3s ease;
 }
-.product-card__image img:hover {
+.product-card__image img:hover, .product-card__image img:active {
   transform: scale(1.05);
 }
 .product-card__badge {
@@ -1019,7 +1027,7 @@ header a {
   height: 20px;
   transition: filter 0.3s ease;
 }
-.product-card__fav:hover {
+.product-card__fav:hover, .product-card__fav:active {
   transform: scale(1.1);
 }
 .product-card__info {
@@ -1063,8 +1071,9 @@ header a {
   cursor: pointer;
   transition: background-color 0.3s ease, transform 0.3s ease;
 }
-.product-card__btn:hover {
+.product-card__btn:hover, .product-card__btn:active {
   transform: scale(1.03);
+  background-color: rgb(219.125, 229.375, 224.25);
 }
 .product-card__btn p {
   margin: 0;
@@ -1093,7 +1102,7 @@ header a {
   height: 60px;
   transition: background-color 0.3s ease;
 }
-.turn-page__btn:hover {
+.turn-page__btn:hover, .turn-page__btn:active {
   background-color: #EAF0ED;
 }
 .turn-page__number {
@@ -1153,9 +1162,10 @@ header a {
   margin: 0 30px;
   margin-bottom: 16px;
   padding: 17px 20px;
+  border: #EAF0ED 3px solid;
 }
 .login__field:focus-within {
-  border-color: #3F5D45;
+  border-color: #FFE180;
 }
 .login__icon {
   width: 24px;
@@ -1212,7 +1222,7 @@ header a {
     margin-top: 30px;
   }
 }
-.login__button:hover {
+.login__button:hover, .login__button:active {
   background-color: rgb(255, 218.9763779528, 102.5);
   transform: scale(1.02);
 }
@@ -1290,8 +1300,9 @@ header a {
 .login__social-btn img {
   object-fit: contain;
 }
-.login__social-btn:hover {
+.login__social-btn:hover, .login__social-btn:active {
   transform: scale(1.05);
+  background-color: #FFE180;
 }
 
 /* cart.scss */
@@ -1315,7 +1326,8 @@ header a {
   }
 }
 .cart__content {
-  flex: 620;
+  max-width: 620px;
+  flex: 1;
 }
 @media (max-width: 568px) {
   .cart__content {
@@ -1350,6 +1362,8 @@ header a {
   display: flex;
   justify-content: space-between;
   align-items: center;
+  flex: 1;
+  gap: 39px;
 }
 @media (max-width: 568px) {
   .cart__item {
@@ -1359,8 +1373,10 @@ header a {
 }
 .cart__item-info {
   display: flex;
-  justify-content: space-between;
+  justify-content: center;
   align-items: center;
+  gap: 20px;
+  flex: 1;
 }
 .cart__item-image {
   width: 110px;
@@ -1371,7 +1387,9 @@ header a {
 .cart__item-details {
   display: flex;
   justify-content: space-between;
+  align-items: center;
   flex-wrap: wrap;
+  width: 100%;
 }
 @media (max-width: 568px) {
   .cart__item-details {
@@ -1383,8 +1401,8 @@ header a {
   display: flex;
   justify-content: space-between;
   flex-direction: column;
-  margin-left: 39px;
   gap: 3px;
+  min-width: 150px;
 }
 .cart__item-name {
   font: normal normal 300 20px/20px "PingFang TC", "Noto Sans TC", "Microsoft JhengHei", sans-serif;
@@ -1397,7 +1415,6 @@ header a {
 .cart__item-quantity {
   display: flex;
   align-items: center;
-  margin-left: 39px;
 }
 .cart__divider {
   width: 100%;
@@ -1432,7 +1449,7 @@ header a {
   font-size: 18px;
   transition: background-color 0.2s ease;
 }
-.cart__qty-btn:hover {
+.cart__qty-btn:hover, .cart__qty-btn:active {
   background-color: #EAF0ED;
 }
 .cart__qty-value {
@@ -1446,6 +1463,8 @@ header a {
   display: flex;
   justify-content: space-between;
   align-items: center;
+  align-items: center;
+  max-width: 200px;
 }
 @media (max-width: 568px) {
   .cart__item-summary {
@@ -1455,7 +1474,6 @@ header a {
 .cart__item-total {
   font: normal normal 600 20px/20px "PingFang TC", "Noto Sans TC", "Microsoft JhengHei", sans-serif;
   color: #3F5D45;
-  margin: 0 39px;
 }
 @media (max-width: 568px) {
   .cart__item-total {
@@ -1480,11 +1498,12 @@ header a {
   height: 20px;
   transition: transform 0.2s ease;
 }
-.cart__item-delete img:hover {
+.cart__item-delete img:hover, .cart__item-delete img:active {
   transform: scale(1.1);
 }
 .cart__summary {
-  flex: 300;
+  max-width: 300px;
+  flex: 1;
   background-color: #3F5D45;
 }
 @media (max-width: 568px) {
@@ -1552,7 +1571,7 @@ header a {
   cursor: pointer;
   transition: background-color 0.3s ease, transform 0.2s ease;
 }
-.cart__checkout-btn:hover {
+.cart__checkout-btn:hover, .cart__checkout-btn:active {
   background-color: rgb(255, 218.9763779528, 102.5);
   transform: scale(1.02);
 }
@@ -1583,7 +1602,14 @@ header a {
 .checkout__form {
   margin: 0;
   background-color: #3F5D45;
-  flex: 460;
+  flex: 1;
+  max-width: 460px;
+}
+@media (max-width: 568px) {
+  .checkout__form {
+    max-width: none;
+    width: 100%;
+  }
 }
 .checkout__fieldset {
   border: none;
@@ -1734,8 +1760,9 @@ header a {
   cursor: pointer;
   transition: transform 0.3s ease, background-color 0.3s ease;
 }
-.checkout__button:hover {
+.checkout__button:hover, .checkout__button:active {
   transform: scale(1.03);
+  background-color: rgb(255, 218.9763779528, 102.5);
 }
 .checkout__button p {
   font: normal normal 600 24px/24px "PingFang TC", "Noto Sans TC", "Microsoft JhengHei", sans-serif;
@@ -1748,7 +1775,8 @@ header a {
   align-items: center;
   flex-direction: column;
   gap: 20px;
-  flex: 300;
+  flex: 1;
+  max-width: 300px;
 }
 @media (max-width: 568px) {
   .checkout__side {
@@ -1799,7 +1827,7 @@ header a {
 .checkout__type-btn--active p {
   color: #3F5D45;
 }
-.checkout__type-btn:hover {
+.checkout__type-btn:hover, .checkout__type-btn:active {
   transform: scale(1.03);
 }
 .checkout__checkbox-wrap {
@@ -1864,25 +1892,32 @@ header a {
   justify-content: center;
   align-items: center;
   flex-direction: column;
-  padding: 16px 20px;
   gap: 16px;
+  padding: 16px 0;
 }
 .checkout-cart__item {
   display: flex;
-  justify-content: space-between;
+  justify-content: center;
   align-items: center;
+  justify-content: flex-start;
+  gap: 20px;
   width: 100%;
 }
 .checkout-cart__image-wrapper {
+  display: flex;
+  justify-content: center;
+  align-items: center;
   width: 120px;
   height: 80px;
+  min-width: 120px;
+  min-height: 80px;
   overflow: hidden;
+  margin-left: 20px;
 }
 .checkout-cart__image {
   width: 100%;
   height: 100%;
   object-fit: cover;
-  display: block;
 }
 .checkout-cart__details {
   display: flex;
@@ -1890,6 +1925,7 @@ header a {
   align-items: center;
   align-items: flex-start;
   flex-direction: column;
+  max-width: 140px;
   gap: 2px;
 }
 .checkout-cart__name {
@@ -1996,8 +2032,9 @@ header a {
 .checkout-success__button p {
   margin: 0;
 }
-.checkout-success__button:hover {
+.checkout-success__button:hover, .checkout-success__button:active {
   transform: scale(1.03);
+  background-color: rgb(255, 218.9763779528, 102.5);
 }
 @media (max-width: 568px) {
   .checkout-success__button--lg {

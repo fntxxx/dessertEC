@@ -1,7 +1,38 @@
+/* products.js */
+
 import productsData from "./products-data.js";
 
 export default function products() {
     const el = document.createElement("section");
+
+    // ======== 動態建立分類按鈕 ========
+    const badgeMap = {
+        all: "所有甜點",
+        daily: "本日精選",
+        popular: "人氣推薦",
+        new: "新品上市"
+    };
+
+    // 統計各分類數量
+    const categoryCount = productsData.reduce((acc, item) => {
+        acc[item.badge] = (acc[item.badge] || 0) + 1;
+        return acc;
+    }, {});
+    categoryCount.all = productsData.length;
+
+    // 產生分類表格 HTML
+    const categoryRows = Object.entries(badgeMap)
+        .map(([key, name]) => `
+            <tr>
+                <td>
+                    <button type="button" class="product-list__category-btn" data-badge="${key}">
+                        <p>${name}（${categoryCount[key] || 0}）</p>
+                    </button>
+                </td>
+            </tr>
+        `)
+        .join("");
+
     el.innerHTML = `
     <section class="product-hero">
         <div class="product-hero__image-wrapper">
@@ -24,18 +55,7 @@ export default function products() {
                     </tr>
                 </thead>
                 <tbody>
-                    <tr>
-                        <td><button type="button" class="product-list__category-btn" data-badge="all"><p>所有甜點（48）</p></button></td>
-                    </tr>
-                    <tr>
-                        <td><button type="button" class="product-list__category-btn" data-badge="daily"><p>本日精選（10）</p></button></td>
-                    </tr>
-                    <tr>
-                        <td><button type="button" class="product-list__category-btn" data-badge="popular"><p>人氣推薦（26）</p></button></td>
-                    </tr>
-                    <tr>
-                        <td><button type="button" class="product-list__category-btn" data-badge="new"><p>新品上市（12）</p></button></td>
-                    </tr>
+                    ${categoryRows}
                 </tbody>
             </table>
         </div>
@@ -55,19 +75,10 @@ export default function products() {
     let currentPage = 0;
     let currentData = productsData;
 
-    // 英文 badge 對應中文顯示
-    const badgeMap = {
-        all: "所有甜點",
-        daily: "本日精選",
-        popular: "人氣推薦",
-        new: "新品上市"
-    };
-
     // 讀取 URL hash 參數，設定初始分類
     function getInitialCategory() {
-        const hash = location.hash;
-        const match = hash.match(/category=(\w+)/);
-        return match ? match[1] : "all";
+        const params = new URLSearchParams(location.hash.split("?")[1]);
+        return params.get("category") || "all";
     }
 
     // 切換 active 按鈕
@@ -115,8 +126,10 @@ export default function products() {
         });
 
         // 事件委派：加入購物車
-        productList.querySelectorAll(".product-card__btn").forEach(btn => {
-            btn.addEventListener("click", () => location.hash = "cart");
+        productList.addEventListener("click", e => {
+            if (e.target.closest(".product-card__btn")) {
+                location.hash = "cart";
+            }
         });
 
         renderPagination();
@@ -150,6 +163,7 @@ export default function products() {
             const leftEllipsis = document.createElement("span");
             leftEllipsis.textContent = "...";
             leftEllipsis.className = "turn-page__btn pagination-ellipsis";
+            leftEllipsis.title = "回到第一頁";
             leftEllipsis.style.cursor = "pointer";
             leftEllipsis.addEventListener("click", () => {
                 currentPage = 0;
@@ -173,6 +187,7 @@ export default function products() {
             const rightEllipsis = document.createElement("span");
             rightEllipsis.textContent = "...";
             rightEllipsis.className = "turn-page__btn pagination-ellipsis";
+            rightEllipsis.title = "跳到最後一頁";
             rightEllipsis.style.cursor = "pointer";
             rightEllipsis.addEventListener("click", () => {
                 currentPage = totalPages - 1;
